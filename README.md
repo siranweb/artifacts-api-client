@@ -1,7 +1,7 @@
 
 # Api Client for [Artifacts](https://artifactsmmo.com)
-[![npm](https://img.shields.io/npm/v/sql-migrations-core.svg?maxAge=1000)](https://www.npmjs.com/package/artifacts-api-client)
-[![npm](https://img.shields.io/npm/l/sql-migrations-core.svg?maxAge=1000)](https://github.com/siranweb/artifacts-api-client/LICENSE.md)
+[![npm](https://img.shields.io/npm/v/artifacts-api-client.svg?maxAge=1000)](https://www.npmjs.com/package/artifacts-api-client)
+[![npm](https://img.shields.io/npm/l/artifacts-api-client.svg?maxAge=1000)](https://github.com/siranweb/artifacts-api-client/LICENSE.md)
 
 API wrapper for NodeJS and browsers with TypeScript support
 
