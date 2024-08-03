@@ -54,10 +54,13 @@ export class ArtifactsMyCharactersApi {
   }
 
   /** Crafting an item. The character must be on a map with a workshop. */
-  public crafting(name: string): Promise<components['schemas']['SkillResponseSchema']> {
+  public crafting(
+    name: string,
+    body: components['schemas']['CraftingSchema'],
+  ): Promise<components['schemas']['SkillResponseSchema']> {
     return this.httpClient.post<components['schemas']['SkillResponseSchema']>(
       `/my/${name}/action/crafting`,
-      { isSecure: true },
+      { body, isSecure: true },
     );
   }
 
