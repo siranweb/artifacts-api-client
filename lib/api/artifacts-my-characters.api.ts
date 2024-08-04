@@ -176,17 +176,6 @@ export class ArtifactsMyCharactersApi {
     );
   }
 
-  /** History of your character's last 100 actions. */
-  public getCharacterLogs(
-    name: string,
-    params: operations['get_character_logs_my__name__logs_get']['parameters']['query'] = {},
-  ): Promise<components['schemas']['DataPage_LogSchema_']> {
-    return this.httpClient.get<components['schemas']['DataPage_LogSchema_']>(`/my/${name}/logs`, {
-      query: params,
-      isSecure: true,
-    });
-  }
-
   /** History of the last 100 actions of all your characters. */
   public getLogs(
     params: operations['get_all_characters_logs_my_logs_get']['parameters']['query'] = {},

@@ -66,11 +66,3 @@ try {
   }
 }
 ```
-
-## Changelog
-
-### v1.0.1
-* Fixed `myCharacters.crafting()` method. Missing body added
-
-### v1.0.0
-* Supported API version: 1.3

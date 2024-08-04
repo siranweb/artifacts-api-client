@@ -344,26 +344,6 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/my/{name}/logs': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * Get Character Logs
-     * @description History of your character's last 100 actions.
-     */
-    get: operations['get_character_logs_my__name__logs_get'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   '/my/logs': {
     parameters: {
       query?: never;
@@ -672,10 +652,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Get Resources
+     * Get Resource
      * @description Retrieve the details of a resource.
      */
-    get: operations['get_resources_resources__code__get'];
+    get: operations['get_resource_resources__code__get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -1520,6 +1500,12 @@ export interface components {
        * @description Deprecated** The remaining seconds of the cooldown.
        */
       remainingSeconds: number;
+      /**
+       * Started At
+       * Format: date-time
+       * @description The start of the cooldown.
+       */
+      started_at: string;
       /**
        * Expiration
        * Format: date-time
@@ -3745,48 +3731,6 @@ export interface operations {
       };
     };
   };
-  get_character_logs_my__name__logs_get: {
-    parameters: {
-      query?: {
-        /** @description Page number */
-        page?: number;
-        /** @description Page size */
-        size?: number;
-      };
-      header?: never;
-      path: {
-        /** @description Name of your character. */
-        name: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successfully fetched logs. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['DataPage_LogSchema_'];
-        };
-      };
-      /** @description Logs not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Character not found. */
-      498: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
   get_all_characters_logs_my_logs_get: {
     parameters: {
       query?: {
@@ -3812,6 +3756,13 @@ export interface operations {
       };
       /** @description Logs not found. */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character not found. */
+      498: {
         headers: {
           [name: string]: unknown;
         };
@@ -4321,7 +4272,7 @@ export interface operations {
       };
     };
   };
-  get_resources_resources__code__get: {
+  get_resource_resources__code__get: {
     parameters: {
       query?: never;
       header?: never;
