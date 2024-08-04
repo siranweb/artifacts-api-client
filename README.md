@@ -33,7 +33,7 @@ await artifactsApi.myCharacters.fight('name');
 
 Alternatively, you can set token later:
 
-```ts
+```js
 import { ArtifactsApi } from 'artifacts-api-client';
 
 const artifactsApi = ArtifactsApi.create();
@@ -49,7 +49,7 @@ await artifactsApi.myCharacters.fight('name'); // <-- now it works
 ## Error handling
 All artifacts API errors are wrapped with `ArtifactsError`.
 Keep in mind, that the others errors like `NetworkError` left as they are:
-```ts
+```js
 import { ArtifactsApi, ArtifactsError } from 'artifacts-api-client';
 
 const artifactsApi = ArtifactsApi.create({
@@ -58,11 +58,28 @@ const artifactsApi = ArtifactsApi.create({
 
 try {
   await artifactsApi.myCharacters.fight('name');
-} catch (err: unknown) {
+} catch (err) {
   if (err instanceof ArtifactsError) {
     console.error('Artifacts error', e.message, e.code, e.data);
   } else {
     throw e;
   }
 }
+```
+
+## Type bindings
+If package being used with TypeScript you'll probably need methods' types.
+They are available to import:
+
+```ts
+import { ArtifactsApi, GetAllMapsApiResult, GetAllMapsApiQuery } from 'artifacts-api-client';
+
+const artifactsApi = ArtifactsApi.create({
+  token: 'TOKEN'
+});
+
+function getMaps(params: GetAllMapsApiQuery): Promise<GetAllMapsApiResult> {
+  // ... custom logic ...
+  return artifactsApi.maps.getAll(params);
+};
 ```
