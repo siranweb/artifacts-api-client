@@ -1,14 +1,12 @@
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
-import { components, operations } from '../types/api-schema.types';
+import { GetAllEventsApiQuery, GetAllEventsApiResult } from './types/api-schema-bindings.types';
 
 export class ArtifactsEventsApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
   /** Fetch events details. */
-  public getAll(
-    params: operations['get_all_events_events__get']['parameters']['query'] = {},
-  ): Promise<components['schemas']['DataPage_EventSchema_']> {
-    return this.httpClient.get<components['schemas']['DataPage_EventSchema_']>(`/events`, {
+  public getAll(params: GetAllEventsApiQuery = {}): Promise<GetAllEventsApiResult> {
+    return this.httpClient.get<GetAllEventsApiResult>(`/events`, {
       query: params,
     });
   }

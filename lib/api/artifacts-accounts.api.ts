@@ -1,14 +1,12 @@
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
-import { components } from '../types/api-schema.types';
+import { CreateAccountApiBody, CreateAccountApiResult } from './types/api-schema-bindings.types';
 
 export class ArtifactsAccountsApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
   /** Create an account. */
-  public create(
-    body: components['schemas']['AddAccountSchema'],
-  ): Promise<components['schemas']['ResponseSchema']> {
-    return this.httpClient.post<components['schemas']['ResponseSchema']>(`/accounts/create`, {
+  public create(body: CreateAccountApiBody): Promise<CreateAccountApiResult> {
+    return this.httpClient.post<CreateAccountApiResult>(`/accounts/create`, {
       body,
     });
   }

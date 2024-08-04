@@ -2,7 +2,7 @@ import {
   GetRequestParams,
   PostRequestParams,
   RequestParams,
-} from '../types/artifacts-http-client.types';
+} from './types/artifacts-http-client.types';
 import { ArtifactsError } from '../errors/artifacts.error';
 
 export class ArtifactsHttpClient {

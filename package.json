@@ -1,6 +1,6 @@
 {
   "name": "artifacts-api-client",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Api client for https://artifactsmmo.com",
   "main": "dist/index.js",
   "repository": "https://github.com/siranweb/artifacts-api-client.git",
@@ -10,12 +10,11 @@
     "client"
   ],
   "scripts": {
-    "test": "jest",
     "build": "tsc",
     "ts-check": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 --ext .ts lib",
     "format": "prettier --log-level warn --write lib",
-    "generate-schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o ./lib/types/api-schema.types.ts"
+    "generate-schema": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o lib/api/types/api-schema.types.ts"
   },
   "author": "Kirill Gerasimenko <siranweb.public@tuta.io>",
   "license": "MIT",

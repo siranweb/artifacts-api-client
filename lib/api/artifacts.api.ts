@@ -1,6 +1,5 @@
-import { components } from '../types/api-schema.types';
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
-import { ArtifactsApiParams } from '../types/artifacts-api.types';
+import { ArtifactsApiParams } from './types/artifacts-api.types';
 import { ArtifactsMyCharactersApi } from './artifacts-my-characters.api';
 import { ArtifactsCharactersApi } from './artifacts-characters.api';
 import { ArtifactsMyAccountApi } from './artifacts-my-account.api';
@@ -12,6 +11,7 @@ import { ArtifactsEventsApi } from './artifacts-events.api';
 import { ArtifactsGrandExchangeApi } from './artifacts-grand-exchange.api';
 import { ArtifactsAccountsApi } from './artifacts-accounts.api';
 import { ArtifactsTokenApi } from './artifacts-token.api';
+import { GetStatusApiResult } from './types/api-schema-bindings.types';
 
 export class ArtifactsApi {
   public readonly myCharacters: ArtifactsMyCharactersApi;
@@ -48,8 +48,8 @@ export class ArtifactsApi {
     return new ArtifactsApi(httpClient);
   }
 
-  public getStatus(): Promise<components['schemas']['StatusResponseSchema']> {
-    return this.httpClient.get<components['schemas']['StatusResponseSchema']>('/');
+  public getStatus(): Promise<GetStatusApiResult> {
+    return this.httpClient.get<GetStatusApiResult>('/');
   }
 
   public setToken(token: string): void {

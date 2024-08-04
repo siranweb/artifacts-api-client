@@ -1,20 +1,22 @@
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
-import { components, operations } from '../types/api-schema.types';
+import {
+  GetAllMonstersApiQuery,
+  GetAllMonstersApiResult,
+  GetMonsterApiResult,
+} from './types/api-schema-bindings.types';
 
 export class ArtifactsMonstersApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
   /** Fetch monsters details. */
-  public getAll(
-    params: operations['get_all_monsters_monsters__get']['parameters']['query'] = {},
-  ): Promise<components['schemas']['DataPage_MonsterSchema_']> {
-    return this.httpClient.get<components['schemas']['DataPage_MonsterSchema_']>(`/monsters`, {
+  public getAll(params: GetAllMonstersApiQuery = {}): Promise<GetAllMonstersApiResult> {
+    return this.httpClient.get<GetAllMonstersApiResult>(`/monsters`, {
       query: params,
     });
   }
 
   /** Retrieve the details of a monster. */
-  public get(code: string): Promise<components['schemas']['MonsterResponseSchema']> {
-    return this.httpClient.get<components['schemas']['MonsterResponseSchema']>(`/monsters/${code}`);
+  public get(code: string): Promise<GetMonsterApiResult> {
+    return this.httpClient.get<GetMonsterApiResult>(`/monsters/${code}`);
   }
 }
