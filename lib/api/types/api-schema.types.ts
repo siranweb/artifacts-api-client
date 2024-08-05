@@ -792,6 +792,38 @@ export interface components {
     ActionItemBankResponseSchema: {
       data: components['schemas']['BankItemSchema'];
     };
+    /** ActiveEventSchema */
+    ActiveEventSchema: {
+      /**
+       * Name
+       * @description Name of the event.
+       */
+      name: string;
+      /** @description Map of the event. */
+      map: components['schemas']['MapSchema'];
+      /**
+       * Previous Skin
+       * @description Previous map skin.
+       */
+      previous_skin: string;
+      /**
+       * Duration
+       * @description Duration in minutes.
+       */
+      duration: number;
+      /**
+       * Expiration
+       * Format: date-time
+       * @description Expiration datetime.
+       */
+      expiration: string;
+      /**
+       * Created At
+       * Format: date-time
+       * @description Start datetime.
+       */
+      created_at: string;
+    };
     /** AddAccountSchema */
     AddAccountSchema: {
       /**
@@ -1277,206 +1309,6 @@ export interface components {
        * @description List of inventory slots.
        */
       inventory?: components['schemas']['InventorySlot'][];
-      /**
-       * Inventory Slot1
-       * @description Deprecated** Inventory slot 1.
-       */
-      inventory_slot1: string;
-      /**
-       * Inventory Slot1 Quantity
-       * @description Deprecated** Inventory 1 quantity.
-       */
-      inventory_slot1_quantity: number;
-      /**
-       * Inventory Slot2
-       * @description Deprecated** Inventory slot 2.
-       */
-      inventory_slot2: string;
-      /**
-       * Inventory Slot2 Quantity
-       * @description Deprecated** Inventory 2 quantity.
-       */
-      inventory_slot2_quantity: number;
-      /**
-       * Inventory Slot3
-       * @description Deprecated** Inventory slot 3.
-       */
-      inventory_slot3: string;
-      /**
-       * Inventory Slot3 Quantity
-       * @description Deprecated** Inventory 3 quantity.
-       */
-      inventory_slot3_quantity: number;
-      /**
-       * Inventory Slot4
-       * @description Deprecated** Inventory slot 4.
-       */
-      inventory_slot4: string;
-      /**
-       * Inventory Slot4 Quantity
-       * @description Deprecated** Inventory 4 quantity.
-       */
-      inventory_slot4_quantity: number;
-      /**
-       * Inventory Slot5
-       * @description Deprecated** Inventory slot 5.
-       */
-      inventory_slot5: string;
-      /**
-       * Inventory Slot5 Quantity
-       * @description Deprecated** Inventory 5 quantity.
-       */
-      inventory_slot5_quantity: number;
-      /**
-       * Inventory Slot6
-       * @description Deprecated** Inventory slot 6.
-       */
-      inventory_slot6: string;
-      /**
-       * Inventory Slot6 Quantity
-       * @description Deprecated** Inventory 6 quantity.
-       */
-      inventory_slot6_quantity: number;
-      /**
-       * Inventory Slot7
-       * @description Deprecated** Inventory slot 7.
-       */
-      inventory_slot7: string;
-      /**
-       * Inventory Slot7 Quantity
-       * @description Deprecated** Inventory 7 quantity.
-       */
-      inventory_slot7_quantity: number;
-      /**
-       * Inventory Slot8
-       * @description Deprecated** Inventory slot 8.
-       */
-      inventory_slot8: string;
-      /**
-       * Inventory Slot8 Quantity
-       * @description Deprecated** Inventory 8 quantity.
-       */
-      inventory_slot8_quantity: number;
-      /**
-       * Inventory Slot9
-       * @description Deprecated** Inventory slot 9.
-       */
-      inventory_slot9: string;
-      /**
-       * Inventory Slot9 Quantity
-       * @description Deprecated** Inventory 9 quantity.
-       */
-      inventory_slot9_quantity: number;
-      /**
-       * Inventory Slot10
-       * @description Deprecated** Inventory slot 10.
-       */
-      inventory_slot10: string;
-      /**
-       * Inventory Slot10 Quantity
-       * @description Deprecated** Inventory 10 quantity.
-       */
-      inventory_slot10_quantity: number;
-      /**
-       * Inventory Slot11
-       * @description Deprecated** Inventory slot 11.
-       */
-      inventory_slot11: string;
-      /**
-       * Inventory Slot11 Quantity
-       * @description Deprecated** Inventory 11 quantity.
-       */
-      inventory_slot11_quantity: number;
-      /**
-       * Inventory Slot12
-       * @description Deprecated** nventory slot 12.
-       */
-      inventory_slot12: string;
-      /**
-       * Inventory Slot12 Quantity
-       * @description Deprecated** Inventory 12 quantity.
-       */
-      inventory_slot12_quantity: number;
-      /**
-       * Inventory Slot13
-       * @description Deprecated** Inventory slot 13.
-       */
-      inventory_slot13: string;
-      /**
-       * Inventory Slot13 Quantity
-       * @description Deprecated** Inventory 13 quantity.
-       */
-      inventory_slot13_quantity: number;
-      /**
-       * Inventory Slot14
-       * @description Deprecated** Inventory slot 14.
-       */
-      inventory_slot14: string;
-      /**
-       * Inventory Slot14 Quantity
-       * @description Deprecated** Inventory 14 quantity.
-       */
-      inventory_slot14_quantity: number;
-      /**
-       * Inventory Slot15
-       * @description Deprecated** Inventory slot 15.
-       */
-      inventory_slot15: string;
-      /**
-       * Inventory Slot15 Quantity
-       * @description Deprecated** Inventory 15 quantity.
-       */
-      inventory_slot15_quantity: number;
-      /**
-       * Inventory Slot16
-       * @description Deprecated** Inventory slot 16.
-       */
-      inventory_slot16: string;
-      /**
-       * Inventory Slot16 Quantity
-       * @description Deprecated** Inventory 16 quantity.
-       */
-      inventory_slot16_quantity: number;
-      /**
-       * Inventory Slot17
-       * @description Deprecated** Inventory slot 17.
-       */
-      inventory_slot17: string;
-      /**
-       * Inventory Slot17 Quantity
-       * @description Deprecated** Inventory 17 quantity.
-       */
-      inventory_slot17_quantity: number;
-      /**
-       * Inventory Slot18
-       * @description Deprecated** Inventory slot 18.
-       */
-      inventory_slot18: string;
-      /**
-       * Inventory Slot18 Quantity
-       * @description Deprecated** Inventory 18 quantity.
-       */
-      inventory_slot18_quantity: number;
-      /**
-       * Inventory Slot19
-       * @description Deprecated** Inventory slot 19.
-       */
-      inventory_slot19: string;
-      /**
-       * Inventory Slot19 Quantity
-       * @description Deprecated** Inventory 19 quantity.
-       */
-      inventory_slot19_quantity: number;
-      /**
-       * Inventory Slot20
-       * @description Deprecated** Inventory slot 20.
-       */
-      inventory_slot20: string;
-      /**
-       * Inventory Slot20 Quantity
-       * @description Deprecated** Inventory 20 quantity.
-       */
-      inventory_slot20_quantity: number;
     };
     /** CooldownSchema */
     CooldownSchema: {
@@ -1490,16 +1322,6 @@ export interface components {
        * @description The remaining seconds of the cooldown.
        */
       remaining_seconds: number;
-      /**
-       * Totalseconds
-       * @description Deprecated** The total seconds of the cooldown.
-       */
-      totalSeconds: number;
-      /**
-       * Remainingseconds
-       * @description Deprecated** The remaining seconds of the cooldown.
-       */
-      remainingSeconds: number;
       /**
        * Started At
        * Format: date-time
@@ -1578,10 +1400,10 @@ export interface components {
        */
       quantity: number;
     };
-    /** DataPage[CharacterSchema] */
-    DataPage_CharacterSchema_: {
+    /** DataPage[ActiveEventSchema] */
+    DataPage_ActiveEventSchema_: {
       /** Data */
-      data: components['schemas']['CharacterSchema'][];
+      data: components['schemas']['ActiveEventSchema'][];
       /** Total */
       total: number | null;
       /** Page */
@@ -1591,10 +1413,10 @@ export interface components {
       /** Pages */
       pages?: number | null;
     };
-    /** DataPage[EventSchema] */
-    DataPage_EventSchema_: {
+    /** DataPage[CharacterSchema] */
+    DataPage_CharacterSchema_: {
       /** Data */
-      data: components['schemas']['EventSchema'][];
+      data: components['schemas']['CharacterSchema'][];
       /** Total */
       total: number | null;
       /** Page */
@@ -1848,38 +1670,6 @@ export interface components {
     /** EquipmentResponseSchema */
     EquipmentResponseSchema: {
       data: components['schemas']['EquipRequestSchema'];
-    };
-    /** EventSchema */
-    EventSchema: {
-      /**
-       * Name
-       * @description Name of the event.
-       */
-      name: string;
-      /** @description Map of the event. */
-      map: components['schemas']['MapSchema'];
-      /**
-       * Previous Skin
-       * @description Previous map skin.
-       */
-      previous_skin: string;
-      /**
-       * Duration
-       * @description Duration in minutes.
-       */
-      duration: number;
-      /**
-       * Expiration
-       * Format: date-time
-       * @description Expiration datetime.
-       */
-      expiration: string;
-      /**
-       * Created At
-       * Format: date-time
-       * @description Start datetime.
-       */
-      created_at: string;
     };
     /** FightSchema */
     FightSchema: {
@@ -3923,7 +3713,7 @@ export interface operations {
   get_all_characters_characters__get: {
     parameters: {
       query?: {
-        /** @description Default sort by total XP. */
+        /** @description Default sort by combat total XP. */
         sort?:
           | 'woodcutting'
           | 'mining'
@@ -3931,7 +3721,8 @@ export interface operations {
           | 'weaponcrafting'
           | 'gearcrafting'
           | 'jewelrycrafting'
-          | 'cooking';
+          | 'cooking'
+          | 'gold';
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -4325,7 +4116,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_EventSchema_'];
+          'application/json': components['schemas']['DataPage_ActiveEventSchema_'];
         };
       };
       /** @description Events not found. */
