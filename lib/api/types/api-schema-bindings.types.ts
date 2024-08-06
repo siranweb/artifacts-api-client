@@ -154,3 +154,8 @@ export type GetResourceApiResult =
 
 export type GenerateTokenResult =
   paths['/token/']['post']['responses'][200]['content']['application/json'];
+
+export type DeleteCharacterApiBody =
+  paths['/characters/delete']['post']['requestBody']['content']['application/json'];
+export type DeleteCharacterApiResult =
+  paths['/characters/delete']['post']['responses'][200]['content']['application/json'];

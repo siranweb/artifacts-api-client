@@ -464,6 +464,26 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/characters/delete': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Delete Character
+     * @description Delete character on your account.
+     */
+    post: operations['delete_character_characters_delete_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/characters/': {
     parameters: {
       query?: never;
@@ -939,7 +959,7 @@ export interface components {
       /** @description Cooldown details */
       cooldown: components['schemas']['CooldownSchema'];
       /** @description Destination details. */
-      destination: components['schemas']['DestinationResponseSchema'];
+      destination: components['schemas']['MapSchema'];
       /** @description Character details. */
       character: components['schemas']['CharacterSchema'];
     };
@@ -1517,6 +1537,14 @@ export interface components {
       /** Pages */
       pages?: number | null;
     };
+    /** DeleteCharacterSchema */
+    DeleteCharacterSchema: {
+      /**
+       * Name
+       * @description Character name.
+       */
+      name: string;
+    };
     /** DeleteItemResponseSchema */
     DeleteItemResponseSchema: {
       data: components['schemas']['DeleteItemSchema'];
@@ -1537,29 +1565,6 @@ export interface components {
        * @description Quantity of gold.
        */
       quantity: number;
-    };
-    /** DestinationResponseSchema */
-    DestinationResponseSchema: {
-      /**
-       * Name
-       * @description The name of the destination.
-       */
-      name: string;
-      /**
-       * X
-       * @description The x coordinate of the destination.
-       */
-      x: number;
-      /**
-       * Y
-       * @description The y coordinate of the destination.
-       */
-      y: number;
-      /**
-       * Content
-       * @description Content of the destination.
-       */
-      content: unknown;
     };
     /** DestinationSchema */
     DestinationSchema: {
@@ -3703,6 +3708,37 @@ export interface operations {
       };
       /** @description Maximum characters reached on your account. */
       495: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  delete_character_characters_delete_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DeleteCharacterSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully deleted character. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CharacterResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
         headers: {
           [name: string]: unknown;
         };

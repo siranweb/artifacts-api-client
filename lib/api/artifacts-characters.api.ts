@@ -2,6 +2,8 @@ import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
 import {
   CreateCharacterApiBody,
   CreateCharacterApiResult,
+  DeleteCharacterApiBody,
+  DeleteCharacterApiResult,
   GetAllCharactersApiQuery,
   GetAllCharactersApiResult,
   GetCharacterApiResult,
@@ -28,5 +30,13 @@ export class ArtifactsCharactersApi {
   /** Fetch characters details. */
   public get(name: string): Promise<GetCharacterApiResult> {
     return this.httpClient.get<GetCharacterApiResult>(`/characters/${name}`);
+  }
+
+  /** Delete character on your account. */
+  public delete(body: DeleteCharacterApiBody): Promise<DeleteCharacterApiResult> {
+    return this.httpClient.post<DeleteCharacterApiResult>('/characters/delete', {
+      body,
+      isSecure: true,
+    });
   }
 }
