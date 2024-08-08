@@ -1216,9 +1216,10 @@ export interface components {
       cooldown: number;
       /**
        * Cooldown Expiration
+       * Format: date-time
        * @description Datetime Cooldown expiration.
        */
-      cooldown_expiration?: string | null;
+      cooldown_expiration?: string;
       /**
        * Weapon Slot
        * @description Weapon slot.
@@ -1379,22 +1380,20 @@ export interface components {
       /**
        * Skill code
        * @description Skill required to craft the item.
+       * @enum {string}
        */
       skill?:
-        | (
-            | 'weaponcrafting'
-            | 'gearcrafting'
-            | 'jewelrycrafting'
-            | 'cooking'
-            | 'woodcutting'
-            | 'mining'
-          )
-        | null;
+        | 'weaponcrafting'
+        | 'gearcrafting'
+        | 'jewelrycrafting'
+        | 'cooking'
+        | 'woodcutting'
+        | 'mining';
       /**
        * Level
        * @description The skill level required to craft the item.
        */
-      level?: number | null;
+      level?: number;
       /**
        * Items
        * @description List of items required to craft the item.
@@ -1404,7 +1403,7 @@ export interface components {
        * Quantity
        * @description Quantity of items crafted.
        */
-      quantity?: number | null;
+      quantity?: number;
     };
     /** CraftingSchema */
     CraftingSchema: {
@@ -2207,13 +2206,15 @@ export interface components {
        * @description Server status
        */
       status: string;
-      /**
-       * Version
-       * @description Game version.
-       */
-      version: string;
+      /** Version */
+      version?: string;
       /** Characters Online */
       characters_online?: number;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time?: string;
       /** Announcements */
       announcements?: components['schemas']['AnnouncementSchema'][];
       /**
@@ -2363,7 +2364,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2439,7 +2440,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2508,7 +2509,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2566,7 +2567,7 @@ export interface operations {
           'application/json': components['schemas']['CharacterFightResponseSchema'];
         };
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2624,7 +2625,7 @@ export interface operations {
           'application/json': components['schemas']['SkillResponseSchema'];
         };
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2707,7 +2708,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2783,6 +2784,13 @@ export interface operations {
         };
         content?: never;
       };
+      /** @description A transaction is already in progress with this item/your golds in your bank. */
+      461: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Missing item or insufficient quantity in your inventory. */
       478: {
         headers: {
@@ -2790,7 +2798,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2845,6 +2853,13 @@ export interface operations {
           'application/json': components['schemas']['GoldResponseSchema'];
         };
       };
+      /** @description A transaction is already in progress with this item/your golds in your bank. */
+      461: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Missing item or insufficient quantity in your inventory. */
       478: {
         headers: {
@@ -2852,7 +2867,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -2935,7 +2950,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3011,6 +3026,13 @@ export interface operations {
         };
         content?: never;
       };
+      /** @description A transaction is already in progress with this item/your golds in your bank. */
+      461: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Missing item or insufficient quantity in your inventory. */
       478: {
         headers: {
@@ -3018,7 +3040,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3087,7 +3109,14 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description A transaction is already in progress with this item/your golds in your bank. */
+      461: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3156,7 +3185,14 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description A transaction is already in progress on this item by a another character. */
+      483: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3246,7 +3282,14 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description A transaction is already in progress on this item by a another character. */
+      483: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3297,7 +3340,7 @@ export interface operations {
           'application/json': components['schemas']['TaskResponseSchema'];
         };
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3355,7 +3398,7 @@ export interface operations {
           'application/json': components['schemas']['TaskRewardResponseSchema'];
         };
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3434,7 +3477,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
@@ -3503,7 +3546,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Character is locked. Action is already in progress. */
+      /** @description An action is already in progress by your character. */
       486: {
         headers: {
           [name: string]: unknown;
