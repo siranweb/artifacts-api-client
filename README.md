@@ -83,3 +83,6 @@ function getMaps(params: GetAllMapsApiQuery): Promise<GetAllMapsApiResult> {
   return artifactsApi.maps.getAll(params);
 };
 ```
+
+## Develop
+Refer to [DEVELOPMENT.md](./DEVELOPMENT.md).
