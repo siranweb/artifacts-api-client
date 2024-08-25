@@ -264,6 +264,26 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/my/{name}/action/bank/buy_expansion': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Buy Bank Expansion
+     * @description Buy a 20 slots bank expansion.
+     */
+    post: operations['action_buy_bank_expansion_my__name__action_bank_buy_expansion_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/my/{name}/action/task/new': {
     parameters: {
       query?: never;
@@ -318,6 +338,26 @@ export interface paths {
      * @description Exchange 3 tasks coins for a random reward. Rewards are exclusive resources for crafting  items.
      */
     post: operations['action_task_exchange_my__name__action_task_exchange_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/{name}/action/task/cancel': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Task Cancel
+     * @description Cancel a task for 1 tasks coin.
+     */
+    post: operations['action_task_cancel_my__name__action_task_cancel_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -384,6 +424,26 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/my/bank': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Bank Details
+     * @description Fetch bank details.
+     */
+    get: operations['get_bank_details_my_bank_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/my/bank/items': {
     parameters: {
       query?: never;
@@ -396,26 +456,6 @@ export interface paths {
      * @description Fetch all items in your bank.
      */
     get: operations['get_bank_items_my_bank_items_get'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/my/bank/gold': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * Get Bank Golds
-     * @description Fetch golds in your bank.
-     */
-    get: operations['get_bank_golds_my_bank_gold_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -484,7 +524,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/characters/': {
+  '/characters': {
     parameters: {
       query?: never;
       header?: never;
@@ -495,7 +535,7 @@ export interface paths {
      * Get All Characters
      * @description Fetch characters details.
      */
-    get: operations['get_all_characters_characters__get'];
+    get: operations['get_all_characters_characters_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -524,7 +564,27 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/maps/': {
+  '/characters/{name}/achievements': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Character Achievements
+     * @description Retrieve the details of a character.
+     */
+    get: operations['get_character_achievements_characters__name__achievements_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/maps': {
     parameters: {
       query?: never;
       header?: never;
@@ -535,7 +595,7 @@ export interface paths {
      * Get All Maps
      * @description Fetch maps details.
      */
-    get: operations['get_all_maps_maps__get'];
+    get: operations['get_all_maps_maps_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -564,7 +624,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/items/': {
+  '/items': {
     parameters: {
       query?: never;
       header?: never;
@@ -575,7 +635,7 @@ export interface paths {
      * Get All Items
      * @description Fetch items details.
      */
-    get: operations['get_all_items_items__get'];
+    get: operations['get_all_items_items_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -604,7 +664,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/monsters/': {
+  '/monsters': {
     parameters: {
       query?: never;
       header?: never;
@@ -615,7 +675,7 @@ export interface paths {
      * Get All Monsters
      * @description Fetch monsters details.
      */
-    get: operations['get_all_monsters_monsters__get'];
+    get: operations['get_all_monsters_monsters_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -644,7 +704,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/resources/': {
+  '/resources': {
     parameters: {
       query?: never;
       header?: never;
@@ -655,7 +715,7 @@ export interface paths {
      * Get All Resources
      * @description Fetch resources details.
      */
-    get: operations['get_all_resources_resources__get'];
+    get: operations['get_all_resources_resources_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -684,7 +744,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/events/': {
+  '/events': {
     parameters: {
       query?: never;
       header?: never;
@@ -695,7 +755,7 @@ export interface paths {
      * Get All Events
      * @description Fetch events details.
      */
-    get: operations['get_all_events_events__get'];
+    get: operations['get_all_events_events_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -704,7 +764,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/ge/': {
+  '/ge': {
     parameters: {
       query?: never;
       header?: never;
@@ -715,7 +775,7 @@ export interface paths {
      * Get All Ge Items
      * @description Fetch Grand Exchange items details.
      */
-    get: operations['get_all_ge_items_ge__get'];
+    get: operations['get_all_ge_items_ge_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -744,6 +804,66 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/achievements': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get All Achievements
+     * @description List of all achievements.
+     */
+    get: operations['get_all_achievements_achievements_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/achievements/{code}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Achievement
+     * @description Retrieve the details of a achievement.
+     */
+    get: operations['get_achievement_achievements__code__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/leaderboard': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Leaderboard
+     * @description Fetch leaderboard details.
+     */
+    get: operations['get_leaderboard_leaderboard_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/accounts/create': {
     parameters: {
       query?: never;
@@ -764,7 +884,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/token/': {
+  '/token': {
     parameters: {
       query?: never;
       header?: never;
@@ -777,7 +897,7 @@ export interface paths {
      * Generate Token
      * @description Use your account as HTTPBasic Auth to generate your token to use the API. You can also generate your token directly on the website.
      */
-    post: operations['generate_token_token__post'];
+    post: operations['generate_token_token_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -808,9 +928,62 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
-    /** ActionItemBankResponseSchema */
-    ActionItemBankResponseSchema: {
-      data: components['schemas']['BankItemSchema'];
+    /** AchievementSchema */
+    AchievementSchema: {
+      /**
+       * Name
+       * @description Name of the achievement.
+       */
+      name: string;
+      /**
+       * Code
+       * @description Code of the achievement.
+       */
+      code: string;
+      /**
+       * Description
+       * @description Description of the achievement.
+       */
+      description: string;
+      /**
+       * Points
+       * @description Points of the achievement. Used for the leaderboard.
+       */
+      points: number;
+      /**
+       * Type
+       * @description Type of achievement.
+       * @enum {string}
+       */
+      type:
+        | 'combat_kill'
+        | 'combat_drop'
+        | 'combat_level'
+        | 'gathering'
+        | 'crafting'
+        | 'recycling'
+        | 'task'
+        | 'other';
+      /**
+       * Target
+       * @description Target of the achievement.
+       */
+      target: string | null;
+      /**
+       * Total
+       * @description Total to do.
+       */
+      total: number;
+      /**
+       * Current
+       * @description Current progress.
+       */
+      current: number;
+      /**
+       * Completed At
+       * @description Completed at.
+       */
+      completed_at: string | null;
     };
     /** ActiveEventSchema */
     ActiveEventSchema: {
@@ -891,8 +1064,46 @@ export interface components {
        */
       created_at?: string;
     };
-    /** BankItemSchema */
-    BankItemSchema: {
+    /** BankExtensionSchema */
+    BankExtensionSchema: {
+      /**
+       * Price
+       * @description Price of the bank extension.
+       */
+      price: number;
+    };
+    /** BankExtensionTransactionResponseSchema */
+    BankExtensionTransactionResponseSchema: {
+      data: components['schemas']['BankExtensionTransactionSchema'];
+    };
+    /** BankExtensionTransactionSchema */
+    BankExtensionTransactionSchema: {
+      /** @description Cooldown details. */
+      cooldown: components['schemas']['CooldownSchema'];
+      /** @description Transaction details. */
+      transaction: components['schemas']['BankExtensionSchema'];
+      /** @description Player details. */
+      character: components['schemas']['CharacterSchema'];
+    };
+    /** BankGoldTransactionResponseSchema */
+    BankGoldTransactionResponseSchema: {
+      data: components['schemas']['BankGoldTransactionSchema'];
+    };
+    /** BankGoldTransactionSchema */
+    BankGoldTransactionSchema: {
+      /** @description Cooldown details. */
+      cooldown: components['schemas']['CooldownSchema'];
+      /** @description Bank details. */
+      bank: components['schemas']['GoldSchema'];
+      /** @description Player details. */
+      character: components['schemas']['CharacterSchema'];
+    };
+    /** BankItemTransactionResponseSchema */
+    BankItemTransactionResponseSchema: {
+      data: components['schemas']['BankItemTransactionSchema'];
+    };
+    /** BankItemTransactionSchema */
+    BankItemTransactionSchema: {
       /** @description Cooldown details. */
       cooldown: components['schemas']['CooldownSchema'];
       /** @description Item details. */
@@ -904,6 +1115,84 @@ export interface components {
       bank: components['schemas']['SimpleItemSchema'][];
       /** @description Player details. */
       character: components['schemas']['CharacterSchema'];
+    };
+    /** BankResponseSchema */
+    BankResponseSchema: {
+      data: components['schemas']['BankSchema'];
+    };
+    /** BankSchema */
+    BankSchema: {
+      /**
+       * Slots
+       * @description Maximum slots in your bank.
+       */
+      slots: number;
+      /**
+       * Expansions
+       * @description Bank expansions.
+       */
+      expansions: number;
+      /**
+       * Next Expansion Cost
+       * @description Next expansion cost.
+       */
+      next_expansion_cost: number;
+      /**
+       * Gold
+       * @description Quantity of gold in your bank.
+       */
+      gold: number;
+    };
+    /** BaseAchievementSchema */
+    BaseAchievementSchema: {
+      /**
+       * Name
+       * @description Name of the achievement.
+       */
+      name: string;
+      /**
+       * Code
+       * @description Code of the achievement.
+       */
+      code: string;
+      /**
+       * Description
+       * @description Description of the achievement.
+       */
+      description: string;
+      /**
+       * Points
+       * @description Points of the achievement. Used for the leaderboard.
+       */
+      points: number;
+      /**
+       * Type
+       * @description Type of achievement.
+       * @enum {string}
+       */
+      type:
+        | 'combat_kill'
+        | 'combat_drop'
+        | 'combat_level'
+        | 'gathering'
+        | 'crafting'
+        | 'recycling'
+        | 'task'
+        | 'other';
+      /**
+       * Target
+       * @description Target of the achievement.
+       */
+      target: string | null;
+      /**
+       * Total
+       * @description Total to do.
+       */
+      total: number;
+    };
+    /** BaseachievementResponseSchema */
+    BaseachievementResponseSchema: {
+      data: components['schemas']['BaseAchievementSchema'];
     };
     /** BlockedHitsSchema */
     BlockedHitsSchema: {
@@ -954,6 +1243,109 @@ export interface components {
     CharacterFightResponseSchema: {
       data: components['schemas']['CharacterFightDataSchema'];
     };
+    /** CharacterLeaderboardSchema */
+    CharacterLeaderboardSchema: {
+      /**
+       * Name
+       * @description Character name.
+       */
+      name: string;
+      /**
+       * Skin
+       * @description Character skin code.
+       */
+      skin: string;
+      /**
+       * Achievements Points
+       * @description Achievements points.
+       */
+      achievements_points: number;
+      /**
+       * Level
+       * @description Combat level.
+       */
+      level: number;
+      /**
+       * Total Xp
+       * @description Total XP of your character.
+       */
+      total_xp: number;
+      /**
+       * Mining Level
+       * @description Mining level.
+       */
+      mining_level: number;
+      /**
+       * Mining Total Xp
+       * @description Mining total xp.
+       */
+      mining_total_xp: number;
+      /**
+       * Woodcutting Level
+       * @description Woodcutting level.
+       */
+      woodcutting_level: number;
+      /**
+       * Woodcutting Total Xp
+       * @description Woodcutting total xp.
+       */
+      woodcutting_total_xp: number;
+      /**
+       * Fishing Level
+       * @description Fishing level.
+       */
+      fishing_level: number;
+      /**
+       * Fishing Total Xp
+       * @description Fishing total xp.
+       */
+      fishing_total_xp: number;
+      /**
+       * Weaponcrafting Level
+       * @description Weaponcrafting level.
+       */
+      weaponcrafting_level: number;
+      /**
+       * Weaponcrafting Total Xp
+       * @description Weaponcrafting total xp.
+       */
+      weaponcrafting_total_xp: number;
+      /**
+       * Gearcrafting Level
+       * @description Gearcrafting level.
+       */
+      gearcrafting_level: number;
+      /**
+       * Gearcrafting Total Xp
+       * @description Gearcrafting total xp.
+       */
+      gearcrafting_total_xp: number;
+      /**
+       * Jewelrycrafting Level
+       * @description Jewelrycrafting level.
+       */
+      jewelrycrafting_level: number;
+      /**
+       * Jewelrycrafting Total Xp
+       * @description Jewelrycrafting total xp.
+       */
+      jewelrycrafting_total_xp: number;
+      /**
+       * Cooking Level
+       * @description Cooking level.
+       */
+      cooking_level: number;
+      /**
+       * Cooking Total Xp
+       * @description Cooking total xp.
+       */
+      cooking_total_xp: number;
+      /**
+       * Gold
+       * @description The numbers of golds on this character.
+       */
+      gold: number;
+    };
     /** CharacterMovementDataSchema */
     CharacterMovementDataSchema: {
       /** @description Cooldown details */
@@ -1000,10 +1392,10 @@ export interface components {
        */
       max_xp: number;
       /**
-       * Total Xp
-       * @description Total XP of your character.
+       * Achievements Points
+       * @description achievements points.
        */
-      total_xp: number;
+      achievements_points: number;
       /**
        * Gold
        * @description The numbers of golds on this character.
@@ -1419,10 +1811,49 @@ export interface components {
        */
       quantity: number;
     };
+    /** DataPage[AchievementSchema] */
+    DataPage_AchievementSchema_: {
+      /** Data */
+      data: components['schemas']['AchievementSchema'][];
+      /** Total */
+      total: number | null;
+      /** Page */
+      page: number | null;
+      /** Size */
+      size: number | null;
+      /** Pages */
+      pages?: number | null;
+    };
     /** DataPage[ActiveEventSchema] */
     DataPage_ActiveEventSchema_: {
       /** Data */
       data: components['schemas']['ActiveEventSchema'][];
+      /** Total */
+      total: number | null;
+      /** Page */
+      page: number | null;
+      /** Size */
+      size: number | null;
+      /** Pages */
+      pages?: number | null;
+    };
+    /** DataPage[BaseAchievementSchema] */
+    DataPage_BaseAchievementSchema_: {
+      /** Data */
+      data: components['schemas']['BaseAchievementSchema'][];
+      /** Total */
+      total: number | null;
+      /** Page */
+      page: number | null;
+      /** Size */
+      size: number | null;
+      /** Pages */
+      pages?: number | null;
+    };
+    /** DataPage[CharacterLeaderboardSchema] */
+    DataPage_CharacterLeaderboardSchema_: {
+      /** Data */
+      data: components['schemas']['CharacterLeaderboardSchema'][];
       /** Total */
       total: number | null;
       /** Page */
@@ -1670,6 +2101,12 @@ export interface components {
         | 'artifact3'
         | 'consumable1'
         | 'consumable2';
+      /**
+       * Quantity
+       * @description Item quantity. Applicable to consumables only.
+       * @default 1
+       */
+      quantity: number;
     };
     /** EquipmentResponseSchema */
     EquipmentResponseSchema: {
@@ -1739,6 +2176,11 @@ export interface components {
        * @description The item's buying price.
        */
       buy_price?: number;
+      /**
+       * Max Quantity
+       * @description The number of items you can buy or sell at the same time.
+       */
+      max_quantity: number;
     };
     /** GETransactionItemSchema */
     GETransactionItemSchema: {
@@ -1794,14 +2236,6 @@ export interface components {
        */
       total_price: number;
     };
-    /** GoldBankResponseSchema */
-    GoldBankResponseSchema: {
-      data: components['schemas']['GoldSchema'];
-    };
-    /** GoldResponseSchema */
-    GoldResponseSchema: {
-      data: components['schemas']['GoldTransactionSchema'];
-    };
     /** GoldSchema */
     GoldSchema: {
       /**
@@ -1809,15 +2243,6 @@ export interface components {
        * @description Quantity of gold.
        */
       quantity: number;
-    };
-    /** GoldTransactionSchema */
-    GoldTransactionSchema: {
-      /** @description Cooldown details. */
-      cooldown: components['schemas']['CooldownSchema'];
-      /** @description Bank details. */
-      bank: components['schemas']['GoldSchema'];
-      /** @description Player details. */
-      character: components['schemas']['CharacterSchema'];
     };
     /** HTTPValidationError */
     HTTPValidationError: {
@@ -1933,10 +2358,9 @@ export interface components {
       cooldown: number;
       /**
        * Cooldown Expiration
-       * Format: date-time
        * @description Datetime of cooldown expiration.
        */
-      cooldown_expiration: string;
+      cooldown_expiration: string | null;
       /**
        * Created At
        * Format: date-time
@@ -2208,15 +2632,27 @@ export interface components {
       status: string;
       /** Version */
       version?: string;
-      /** Characters Online */
-      characters_online?: number;
+      /**
+       * Max Level
+       * @description Maximum level.
+       */
+      max_level: number;
+      /**
+       * Characters Online
+       * @description Characters online.
+       */
+      characters_online: number;
       /**
        * Server Time
        * Format: date-time
+       * @description Server time.
        */
-      server_time?: string;
-      /** Announcements */
-      announcements?: components['schemas']['AnnouncementSchema'][];
+      server_time: string;
+      /**
+       * Announcements
+       * @description Server announcements.
+       */
+      announcements: components['schemas']['AnnouncementSchema'][];
       /**
        * Last Wipe
        * @description Last server wipe.
@@ -2227,6 +2663,17 @@ export interface components {
        * @description Next server wipe.
        */
       next_wipe: string;
+    };
+    /** TaskCancelledResponseSchema */
+    TaskCancelledResponseSchema: {
+      data: components['schemas']['TaskCancelledSchema'];
+    };
+    /** TaskCancelledSchema */
+    TaskCancelledSchema: {
+      /** @description Cooldown details. */
+      cooldown: components['schemas']['CooldownSchema'];
+      /** @description Player details. */
+      character: components['schemas']['CharacterSchema'];
     };
     /** TaskDataSchema */
     TaskDataSchema: {
@@ -2313,6 +2760,12 @@ export interface components {
         | 'artifact3'
         | 'consumable1'
         | 'consumable2';
+      /**
+       * Quantity
+       * @description Item quantity. Applicable to consumables only.
+       * @default 1
+       */
+      quantity: number;
     };
     /** ValidationError */
     ValidationError: {
@@ -2426,8 +2879,15 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
       478: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character can't equip more than 100 consumables in the same slot. */
+      484: {
         headers: {
           [name: string]: unknown;
         };
@@ -2504,6 +2964,13 @@ export interface operations {
       };
       /** @description Item not found. */
       404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Missing item or insufficient quantity. */
+      478: {
         headers: {
           [name: string]: unknown;
         };
@@ -2701,7 +3168,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
       478: {
         headers: {
           [name: string]: unknown;
@@ -2774,7 +3241,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['ActionItemBankResponseSchema'];
+          'application/json': components['schemas']['BankItemTransactionResponseSchema'];
         };
       };
       /** @description Item not found. */
@@ -2791,7 +3258,14 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Your bank is full. */
+      462: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Missing item or insufficient quantity. */
       478: {
         headers: {
           [name: string]: unknown;
@@ -2850,18 +3324,11 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['GoldResponseSchema'];
+          'application/json': components['schemas']['BankGoldTransactionResponseSchema'];
         };
       };
       /** @description A transaction is already in progress with this item/your golds in your bank. */
       461: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Missing item or insufficient quantity in your inventory. */
-      478: {
         headers: {
           [name: string]: unknown;
         };
@@ -2943,7 +3410,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
       478: {
         headers: {
           [name: string]: unknown;
@@ -3016,7 +3483,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['ActionItemBankResponseSchema'];
+          'application/json': components['schemas']['BankItemTransactionResponseSchema'];
         };
       };
       /** @description Item not found. */
@@ -3033,7 +3500,7 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
       478: {
         headers: {
           [name: string]: unknown;
@@ -3099,7 +3566,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['GoldResponseSchema'];
+          'application/json': components['schemas']['BankGoldTransactionResponseSchema'];
         };
       };
       /** @description Insufficient golds in your bank. */
@@ -3170,6 +3637,13 @@ export interface operations {
         content: {
           'application/json': components['schemas']['GETransactionResponseSchema'];
         };
+      };
+      /** @description You can't buy or sell that many items at the same time. */
+      479: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description No stock for this item. */
       480: {
@@ -3268,8 +3742,15 @@ export interface operations {
         };
         content?: never;
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
       478: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description You can't buy or sell that many items at the same time. */
+      479: {
         headers: {
           [name: string]: unknown;
         };
@@ -3311,6 +3792,64 @@ export interface operations {
         content?: never;
       };
       /** @description Grand Exchange not found on this map. */
+      598: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  action_buy_bank_expansion_my__name__action_bank_buy_expansion_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Bank expansion successfully bought. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BankExtensionTransactionResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress by your character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Insufficient golds on your character. */
+      492: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Bank not found on this map. */
       598: {
         headers: {
           [name: string]: unknown;
@@ -3470,7 +4009,72 @@ export interface operations {
           'application/json': components['schemas']['TaskRewardResponseSchema'];
         };
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
+      478: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description An action is already in progress by your character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character inventory is full. */
+      497: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Character in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Tasks Master not found on this map. */
+      598: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  action_task_cancel_my__name__action_task_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description The tasks coins have been successfully exchanged. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['TaskCancelledResponseSchema'];
+        };
+      };
+      /** @description Missing item or insufficient quantity. */
       478: {
         headers: {
           [name: string]: unknown;
@@ -3539,7 +4143,7 @@ export interface operations {
           'application/json': components['schemas']['DeleteItemResponseSchema'];
         };
       };
-      /** @description Missing item or insufficient quantity in your inventory. */
+      /** @description Missing item or insufficient quantity. */
       478: {
         headers: {
           [name: string]: unknown;
@@ -3626,12 +4230,25 @@ export interface operations {
           'application/json': components['schemas']['MyCharactersListSchema'];
         };
       };
-      /** @description Characters not found. */
-      404: {
+    };
+  };
+  get_bank_details_my_bank_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched bank details. */
+      200: {
         headers: {
           [name: string]: unknown;
         };
-        content?: never;
+        content: {
+          'application/json': components['schemas']['BankResponseSchema'];
+        };
       };
     };
   };
@@ -3658,33 +4275,6 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['DataPage_SimpleItemSchema_'];
-        };
-      };
-      /** @description Items not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  get_bank_golds_my_bank_gold_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successfully fetched golds. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['GoldBankResponseSchema'];
         };
       };
     };
@@ -3789,19 +4379,9 @@ export interface operations {
       };
     };
   };
-  get_all_characters_characters__get: {
+  get_all_characters_characters_get: {
     parameters: {
       query?: {
-        /** @description Default sort by combat total XP. */
-        sort?:
-          | 'woodcutting'
-          | 'mining'
-          | 'fishing'
-          | 'weaponcrafting'
-          | 'gearcrafting'
-          | 'jewelrycrafting'
-          | 'cooking'
-          | 'gold';
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -3821,13 +4401,6 @@ export interface operations {
         content: {
           'application/json': components['schemas']['DataPage_CharacterSchema_'];
         };
-      };
-      /** @description Characters not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
       };
     };
   };
@@ -3861,7 +4434,54 @@ export interface operations {
       };
     };
   };
-  get_all_maps_maps__get: {
+  get_character_achievements_characters__name__achievements_get: {
+    parameters: {
+      query?: {
+        /** @description Type of achievements. */
+        type?:
+          | 'combat_kill'
+          | 'combat_drop'
+          | 'combat_level'
+          | 'gathering'
+          | 'crafting'
+          | 'recycling'
+          | 'task'
+          | 'other';
+        /** @description Filter by completed achievements. */
+        completed?: boolean;
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path: {
+        /** @description The character name. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched character. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DataPage_AchievementSchema_'];
+        };
+      };
+      /** @description Character not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  get_all_maps_maps_get: {
     parameters: {
       query?: {
         /** @description Type of content on the map. */
@@ -3893,13 +4513,6 @@ export interface operations {
         content: {
           'application/json': components['schemas']['DataPage_MapSchema_'];
         };
-      };
-      /** @description Maps not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
       };
     };
   };
@@ -3935,7 +4548,7 @@ export interface operations {
       };
     };
   };
-  get_all_items_items__get: {
+  get_all_items_items_get: {
     parameters: {
       query?: {
         /** @description Minimum level items. */
@@ -3955,7 +4568,8 @@ export interface operations {
           | 'boots'
           | 'shield'
           | 'amulet'
-          | 'ring';
+          | 'ring'
+          | 'artifact';
         /** @description Skill to craft items. */
         craft_skill?:
           | 'weaponcrafting'
@@ -3985,13 +4599,6 @@ export interface operations {
         content: {
           'application/json': components['schemas']['DataPage_ItemSchema_'];
         };
-      };
-      /** @description Items not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
       };
     };
   };
@@ -4025,7 +4632,7 @@ export interface operations {
       };
     };
   };
-  get_all_monsters_monsters__get: {
+  get_all_monsters_monsters_get: {
     parameters: {
       query?: {
         /** @description Monster minimum level. */
@@ -4057,13 +4664,6 @@ export interface operations {
           'application/json': components['schemas']['DataPage_MonsterSchema_'];
         };
       };
-      /** @description Monsters not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
     };
   };
   get_monster_monsters__code__get: {
@@ -4071,10 +4671,7 @@ export interface operations {
       query?: never;
       header?: never;
       path: {
-        /**
-         * @description The code of the monster.
-         * @example red_slime
-         */
+        /** @description The code of the monster. */
         code: string;
       };
       cookie?: never;
@@ -4099,7 +4696,7 @@ export interface operations {
       };
     };
   };
-  get_all_resources_resources__get: {
+  get_all_resources_resources_get: {
     parameters: {
       query?: {
         /** @description Skill minimum level. */
@@ -4133,13 +4730,6 @@ export interface operations {
           'application/json': components['schemas']['DataPage_ResourceSchema_'];
         };
       };
-      /** @description Resources not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
     };
   };
   get_resource_resources__code__get: {
@@ -4166,7 +4756,7 @@ export interface operations {
           'application/json': components['schemas']['ResourceResponseSchema'];
         };
       };
-      /** @description Ressource not found. */
+      /** @description Resource not found. */
       404: {
         headers: {
           [name: string]: unknown;
@@ -4175,7 +4765,7 @@ export interface operations {
       };
     };
   };
-  get_all_events_events__get: {
+  get_all_events_events_get: {
     parameters: {
       query?: {
         /** @description Page number */
@@ -4198,16 +4788,9 @@ export interface operations {
           'application/json': components['schemas']['DataPage_ActiveEventSchema_'];
         };
       };
-      /** @description Events not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
     };
   };
-  get_all_ge_items_ge__get: {
+  get_all_ge_items_ge_get: {
     parameters: {
       query?: {
         /** @description Page number */
@@ -4229,13 +4812,6 @@ export interface operations {
         content: {
           'application/json': components['schemas']['DataPage_GEItemSchema_'];
         };
-      };
-      /** @description Item not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
       };
     };
   };
@@ -4266,6 +4842,108 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+    };
+  };
+  get_all_achievements_achievements_get: {
+    parameters: {
+      query?: {
+        /** @description Type of achievements. */
+        type?:
+          | 'combat_kill'
+          | 'combat_drop'
+          | 'combat_level'
+          | 'gathering'
+          | 'crafting'
+          | 'recycling'
+          | 'task'
+          | 'other';
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched achievements. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DataPage_BaseAchievementSchema_'];
+        };
+      };
+    };
+  };
+  get_achievement_achievements__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The code of the achievement. */
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched achievement. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BaseachievementResponseSchema'];
+        };
+      };
+      /** @description achievement not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  get_leaderboard_leaderboard_get: {
+    parameters: {
+      query?: {
+        /** @description Default sort by combat total XP. */
+        sort?:
+          | 'combat'
+          | 'woodcutting'
+          | 'mining'
+          | 'fishing'
+          | 'weaponcrafting'
+          | 'gearcrafting'
+          | 'jewelrycrafting'
+          | 'cooking'
+          | 'achievements_points'
+          | 'gold';
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched leaderboard. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DataPage_CharacterLeaderboardSchema_'];
+        };
       };
     };
   };
@@ -4307,7 +4985,7 @@ export interface operations {
       };
     };
   };
-  generate_token_token__post: {
+  generate_token_token_post: {
     parameters: {
       query?: never;
       header?: never;

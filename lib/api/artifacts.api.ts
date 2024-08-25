@@ -12,6 +12,7 @@ import { ArtifactsGrandExchangeApi } from './artifacts-grand-exchange.api';
 import { ArtifactsAccountsApi } from './artifacts-accounts.api';
 import { ArtifactsTokenApi } from './artifacts-token.api';
 import { GetStatusApiResult } from './types/api-schema-bindings.types';
+import { ArtifactsLeaderboardApi } from './artifacts-leaderboard.api';
 
 export class ArtifactsApi {
   public readonly myCharacters: ArtifactsMyCharactersApi;
@@ -25,6 +26,7 @@ export class ArtifactsApi {
   public readonly events: ArtifactsEventsApi;
   public readonly grandExchange: ArtifactsGrandExchangeApi;
   public readonly token: ArtifactsTokenApi;
+  public readonly leaderboard: ArtifactsLeaderboardApi;
 
   protected constructor(private readonly httpClient: ArtifactsHttpClient) {
     this.myCharacters = new ArtifactsMyCharactersApi(httpClient);
@@ -38,6 +40,7 @@ export class ArtifactsApi {
     this.grandExchange = new ArtifactsGrandExchangeApi(httpClient);
     this.accounts = new ArtifactsAccountsApi(httpClient);
     this.token = new ArtifactsTokenApi(httpClient);
+    this.leaderboard = new ArtifactsLeaderboardApi(httpClient);
   }
 
   public static create(params: ArtifactsApiParams = {}): ArtifactsApi {

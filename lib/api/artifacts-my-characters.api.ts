@@ -32,6 +32,8 @@ import {
   GetLogsApiResult,
   GetLogsApiQuery,
   GetMyCharactersApiResult,
+  CancelTaskApiResult,
+  BuyExpansionApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsMyCharactersApi {
@@ -189,6 +191,20 @@ export class ArtifactsMyCharactersApi {
   /** List of your characters. */
   public getAll(): Promise<GetMyCharactersApiResult> {
     return this.httpClient.get<GetMyCharactersApiResult>(`/my/characters`, {
+      isSecure: true,
+    });
+  }
+
+  /** Cancel a task for 1 tasks coin. */
+  public cancelTask(name: string): Promise<CancelTaskApiResult> {
+    return this.httpClient.post<ExchangeTaskApiResult>(`/my/${name}/action/task/cancel`, {
+      isSecure: true,
+    });
+  }
+
+  /** Buy a 20 slots bank expansion. */
+  public buyBankExpansion(name: string): Promise<BuyExpansionApiResult> {
+    return this.httpClient.post<BuyExpansionApiResult>(`/my/${name}/action/bank/buy_expansion`, {
       isSecure: true,
     });
   }

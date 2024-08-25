@@ -2,7 +2,7 @@ import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
 import {
   ChangePasswordApiBody,
   ChangePasswordApiResult,
-  GetBankGoldApiResult,
+  GetBankApiResult,
   GetBankItemsApiQuery,
   GetBankItemsApiResult,
 } from './types/api-schema-bindings.types';
@@ -18,9 +18,9 @@ export class ArtifactsMyAccountApi {
     });
   }
 
-  /** Fetch golds in your bank. */
-  public getBankGold(): Promise<GetBankGoldApiResult> {
-    return this.httpClient.get<GetBankGoldApiResult>(`/my/bank/gold`, {
+  /** Fetch bank details. */
+  public getBank(): Promise<GetBankApiResult> {
+    return this.httpClient.get<GetBankApiResult>(`/my/bank`, {
       isSecure: true,
     });
   }
