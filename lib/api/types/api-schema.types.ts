@@ -4065,7 +4065,7 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description The tasks coins have been successfully exchanged. */
+      /** @description The task has been successfully cancelled. */
       200: {
         headers: {
           [name: string]: unknown;
@@ -4083,13 +4083,6 @@ export interface operations {
       };
       /** @description An action is already in progress by your character. */
       486: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Character inventory is full. */
-      497: {
         headers: {
           [name: string]: unknown;
         };
@@ -4569,7 +4562,8 @@ export interface operations {
           | 'shield'
           | 'amulet'
           | 'ring'
-          | 'artifact';
+          | 'artifact'
+          | 'currency';
         /** @description Skill to craft items. */
         craft_skill?:
           | 'weaponcrafting'
