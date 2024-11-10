@@ -1,3 +1,5 @@
+# Looking for maintainers
+Contact me with discord (sirandev) or [telegram](https://t.me/sirandev) if you interested in.
 
 # Api Client for [Artifacts](https://artifactsmmo.com)
 [![npm](https://img.shields.io/npm/v/artifacts-api-client.svg?maxAge=1000)](https://www.npmjs.com/package/artifacts-api-client)
