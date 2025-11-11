@@ -1,22 +1,39 @@
 import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
 import {
-  GetAllGrandExchangeApiQuery,
-  GetAllGrandExchangeApiResult,
-  GetGrandExchangeApiResult,
+  GetGrandExchangeSellHistoryApiQuery,
+  GetGrandExchangeSellHistoryApiResult,
+  GetGrandExchangeSellOrderApiResult,
+  GetGrandExchangeSellOrdersApiQuery,
+  GetGrandExchangeSellOrdersApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsGrandExchangeApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
-  /** Fetch Grand Exchange items details. */
-  public getAll(params: GetAllGrandExchangeApiQuery = {}): Promise<GetAllGrandExchangeApiResult> {
-    return this.httpClient.get<GetAllGrandExchangeApiResult>(`/ge`, {
+  /** Fetch the sales history of the item for the last 7 days. */
+  public getHistory(
+    code: string,
+    params: GetGrandExchangeSellHistoryApiQuery = {},
+  ): Promise<GetGrandExchangeSellHistoryApiResult> {
+    return this.httpClient.get<GetGrandExchangeSellHistoryApiResult>(
+      `/grandexchange/history/${code}`,
+      {
+        query: params,
+      },
+    );
+  }
+
+  /** Fetch all sell orders. */
+  public getAll(
+    params: GetGrandExchangeSellOrdersApiQuery = {},
+  ): Promise<GetGrandExchangeSellOrdersApiResult> {
+    return this.httpClient.get<GetGrandExchangeSellOrdersApiResult>('/grandexchange/orders', {
       query: params,
     });
   }
 
-  /** Retrieve the details of a Grand Exchange item. */
-  public get(code: string): Promise<GetGrandExchangeApiResult> {
-    return this.httpClient.get<GetGrandExchangeApiResult>(`/ge/${code}`);
+  /** Retrieve the sell order of a item. */
+  public get(id: string): Promise<GetGrandExchangeSellOrderApiResult> {
+    return this.httpClient.get<GetGrandExchangeSellOrderApiResult>(`/grandexchange/orders/${id}`);
   }
 }

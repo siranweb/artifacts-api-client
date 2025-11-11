@@ -2,7 +2,10 @@ import { ArtifactsHttpClient } from '../http-client/artifacts.http-client';
 import {
   GetAllMapsApiQuery,
   GetAllMapsApiResult,
-  GetMapApiResult,
+  GetLayerMapsApiQuery,
+  GetLayerMapsApiResult,
+  GetMapByIdApiResult,
+  GetMapByPositionApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsMapsApi {
@@ -15,8 +18,27 @@ export class ArtifactsMapsApi {
     });
   }
 
-  /** Retrieve the details of a map. */
-  public get(x: number, y: number): Promise<GetMapApiResult> {
-    return this.httpClient.get<GetMapApiResult>(`/maps/${x}/${y}`);
+  /** Fetch maps details. */
+  public getLayerMaps(
+    layer: 'interior' | 'overworld' | 'underground',
+    params: GetLayerMapsApiQuery = {},
+  ): Promise<GetLayerMapsApiResult> {
+    return this.httpClient.get<GetLayerMapsApiResult>(`/maps/${layer}`, {
+      query: params,
+    });
+  }
+
+  /** Retrieve the details of a map by layer and coordinates. */
+  public getByPosition(
+    layer: 'interior' | 'overworld' | 'underground',
+    x: number,
+    y: number,
+  ): Promise<GetMapByPositionApiResult> {
+    return this.httpClient.get<GetMapByPositionApiResult>(`/maps/${layer}/${x}/${y}`);
+  }
+
+  /** Retrieve the details of a map by its unique ID. */
+  public getById(map_id: number): Promise<GetMapByIdApiResult> {
+    return this.httpClient.get<GetMapByIdApiResult>(`/maps/${map_id}`);
   }
 }

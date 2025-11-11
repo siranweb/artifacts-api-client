@@ -4,8 +4,8 @@ import {
   CreateCharacterApiResult,
   DeleteCharacterApiBody,
   DeleteCharacterApiResult,
-  GetAllCharactersApiQuery,
-  GetAllCharactersApiResult,
+  GetActiveCharactersApiQuery,
+  GetActiveCharactersApiResult,
   GetCharacterApiResult,
 } from './types/api-schema-bindings.types';
 
@@ -20,23 +20,25 @@ export class ArtifactsCharactersApi {
     });
   }
 
-  /** Fetch characters details. */
-  public getAll(params: GetAllCharactersApiQuery = {}): Promise<GetAllCharactersApiResult> {
-    return this.httpClient.get<GetAllCharactersApiResult>(`/characters`, {
-      query: params,
-    });
-  }
-
-  /** Fetch characters details. */
-  public get(name: string): Promise<GetCharacterApiResult> {
-    return this.httpClient.get<GetCharacterApiResult>(`/characters/${name}`);
-  }
-
   /** Delete character on your account. */
   public delete(body: DeleteCharacterApiBody): Promise<DeleteCharacterApiResult> {
     return this.httpClient.post<DeleteCharacterApiResult>('/characters/delete', {
       body,
       isSecure: true,
     });
+  }
+
+  /** Fetch active characters details. */
+  public getActive(
+    params: GetActiveCharactersApiQuery = {},
+  ): Promise<GetActiveCharactersApiResult> {
+    return this.httpClient.get<GetActiveCharactersApiResult>(`/characters/active`, {
+      query: params,
+    });
+  }
+
+  /** Retrieve the details of a character. */
+  public get(name: string): Promise<GetCharacterApiResult> {
+    return this.httpClient.get<GetCharacterApiResult>(`/characters/${name}`);
   }
 }
