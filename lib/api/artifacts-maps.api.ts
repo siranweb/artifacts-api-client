@@ -39,6 +39,6 @@ export class ArtifactsMapsApi {
 
   /** Retrieve the details of a map by its unique ID. */
   public getById(map_id: number): Promise<GetMapByIdApiResult> {
-    return this.httpClient.get<GetMapByIdApiResult>(`/maps/${map_id}`);
+    return this.httpClient.get<GetMapByIdApiResult>(`/maps/id/${map_id}`);
   }
 }
