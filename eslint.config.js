@@ -2,25 +2,25 @@ const { defineConfig } = require("eslint/config");
 const globals = require("globals");
 const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
+const eslintPluginPrettyierRecommended = require('eslint-plugin-prettier/recommended');
 
 module.exports = defineConfig([
-  eslint.configs.recommended, // Basic ESLint recommended rules
-  ...tseslint.configs.recommended, // TypeScript ESLint recommended rules
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  eslintPluginPrettyierRecommended,
   {
     languageOptions: {
       globals: {
-        ...globals.browser, // Or other environments like node
+        ...globals.browser,
       },
       parser: tseslint.parser,
       parserOptions: {
-        project: "./tsconfig.json", // Path to your tsconfig.json
+        project: "./tsconfig.json",
         ecmaVersion: "latest",
         sourceType: "module",
       },
     },
-    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"], // Files to lint
-    rules: {
-      // Your custom rules here
-    },
+    files: ["**/*.ts"],
+    rules: {},
   },
 ]);
