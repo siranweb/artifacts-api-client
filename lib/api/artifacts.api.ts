@@ -13,34 +13,52 @@ import { ArtifactsAccountsApi } from './artifacts-accounts.api';
 import { ArtifactsTokenApi } from './artifacts-token.api';
 import { GetStatusApiResult } from './types/api-schema-bindings.types';
 import { ArtifactsLeaderboardApi } from './artifacts-leaderboard.api';
+import { ArtifactsAchievementsApi } from './artifacts-achievements.api';
+import { ArtifactsBadgesApi } from './artifacts-badges.api';
+import { ArtifactsEffectsApi } from './artifacts-effects.api';
+import { ArtifactsNpcsApi } from './artifacts-npcs.api';
+import { ArtifactsTasksApi } from './artifacts-tasks.api';
+import { ArtifactsSimulationApi } from './artifacts-simulation.api';
 
 export class ArtifactsApi {
-  public readonly myCharacters: ArtifactsMyCharactersApi;
   public readonly myAccount: ArtifactsMyAccountApi;
-  public readonly characters: ArtifactsCharactersApi;
+  public readonly myCharacters: ArtifactsMyCharactersApi;
   public readonly accounts: ArtifactsAccountsApi;
-  public readonly maps: ArtifactsMapsApi;
-  public readonly items: ArtifactsItemsApi;
-  public readonly monsters: ArtifactsMonstersApi;
-  public readonly resources: ArtifactsResourcesApi;
+  public readonly achievements: ArtifactsAchievementsApi;
+  public readonly badges: ArtifactsBadgesApi;
+  public readonly characters: ArtifactsCharactersApi;
+  public readonly effects: ArtifactsEffectsApi;
   public readonly events: ArtifactsEventsApi;
   public readonly grandExchange: ArtifactsGrandExchangeApi;
-  public readonly token: ArtifactsTokenApi;
+  public readonly items: ArtifactsItemsApi;
   public readonly leaderboard: ArtifactsLeaderboardApi;
+  public readonly maps: ArtifactsMapsApi;
+  public readonly monsters: ArtifactsMonstersApi;
+  public readonly npcs: ArtifactsNpcsApi;
+  public readonly resources: ArtifactsResourcesApi;
+  public readonly tasks: ArtifactsTasksApi;
+  public readonly simulation: ArtifactsSimulationApi;
+  public readonly token: ArtifactsTokenApi;
 
   protected constructor(private readonly httpClient: ArtifactsHttpClient) {
-    this.myCharacters = new ArtifactsMyCharactersApi(httpClient);
-    this.characters = new ArtifactsCharactersApi(httpClient);
     this.myAccount = new ArtifactsMyAccountApi(httpClient);
-    this.maps = new ArtifactsMapsApi(httpClient);
-    this.items = new ArtifactsItemsApi(httpClient);
-    this.monsters = new ArtifactsMonstersApi(httpClient);
-    this.resources = new ArtifactsResourcesApi(httpClient);
+    this.myCharacters = new ArtifactsMyCharactersApi(httpClient);
+    this.accounts = new ArtifactsAccountsApi(httpClient);
+    this.achievements = new ArtifactsAchievementsApi(httpClient);
+    this.badges = new ArtifactsBadgesApi(httpClient);
+    this.characters = new ArtifactsCharactersApi(httpClient);
+    this.effects = new ArtifactsEffectsApi(httpClient);
     this.events = new ArtifactsEventsApi(httpClient);
     this.grandExchange = new ArtifactsGrandExchangeApi(httpClient);
-    this.accounts = new ArtifactsAccountsApi(httpClient);
-    this.token = new ArtifactsTokenApi(httpClient);
+    this.items = new ArtifactsItemsApi(httpClient);
     this.leaderboard = new ArtifactsLeaderboardApi(httpClient);
+    this.maps = new ArtifactsMapsApi(httpClient);
+    this.monsters = new ArtifactsMonstersApi(httpClient);
+    this.npcs = new ArtifactsNpcsApi(httpClient);
+    this.resources = new ArtifactsResourcesApi(httpClient);
+    this.tasks = new ArtifactsTasksApi(httpClient);
+    this.simulation = new ArtifactsSimulationApi(httpClient);
+    this.token = new ArtifactsTokenApi(httpClient);
   }
 
   public static create(params: ArtifactsApiParams = {}): ArtifactsApi {

@@ -35,7 +35,7 @@ export class ArtifactsHttpClient {
   }
 
   private async request<R>(params: RequestParams = {}): Promise<R> {
-    const urlParams = new URLSearchParams(params.query);
+    const urlParams = new URLSearchParams(params.query as Record<string, string> | undefined);
     const url = new URL(params.path ?? '', this.baseUrl);
     url.search = urlParams.toString();
 
