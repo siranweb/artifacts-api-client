@@ -6,14 +6,14 @@ import {
   DepositBankGoldApiBody,
   DepositBankGoldApiResult,
   DepositBankItemApiResult,
-  EquipItemApiBody,
-  EquipItemApiResult,
+  EquipItemsApiBody,
+  EquipItemsApiResult,
   FightApiResult,
   GatheringApiResult,
   MoveApiBody,
   MoveApiResult,
-  UnequipItemApiBody,
-  UnequipItemApiResult,
+  UnequipItemsApiBody,
+  UnequipItemsApiResult,
   WithdrawBankItemApiBody,
   WithdrawBankItemApiResult,
   WithdrawBankGoldApiBody,
@@ -43,8 +43,8 @@ import {
   NpcBuyItemApiResult,
   NpcSellItemApiBody,
   NpcSellItemApiResult,
-  CancelGrandExchangeSellOrderApiBody,
-  CancelGrandExchangeSellOrderApiResult,
+  CancelGrandExchangeOrderApiBody,
+  CancelGrandExchangeOrderApiResult,
   TradeTaskItemApiBody,
   TradeTaskItemApiResult,
   GiveGoldApiBody,
@@ -55,6 +55,13 @@ import {
   ChangeSkinApiResult,
   GetLogsApiQuery,
   GetLogsApiResult,
+  CreateGrandExchangeBuyOrderApiBody,
+  CreateGrandExchangeBuyOrderApiResult,
+  FillGrandExchangeApiBody,
+  FillGrandExchangeApiResult,
+  ClaimPendingItemApiResult,
+  RenameApiBody,
+  RenameApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsMyCharactersApi {
@@ -65,7 +72,8 @@ export class ArtifactsMyCharactersApi {
     return this.httpClient.post<MoveApiResult>(`/my/${name}/action/move`, { body, isSecure: true });
   }
 
-  /** Execute a transition from the current map to another layer. The character must be on a map that has a transition available. */
+  /** Execute a transition from the current map to another layer.
+   * The character must be on a map that has a transition available. */
   public transition(name: string): Promise<TransitionApiResult> {
     return this.httpClient.post<TransitionApiResult>(`/my/${name}/action/transition`, {
       isSecure: true,
@@ -77,17 +85,19 @@ export class ArtifactsMyCharactersApi {
     return this.httpClient.post<RestApiResult>(`/my/${name}/action/rest`, { isSecure: true });
   }
 
-  /** Equip an item on your character. */
-  public equipItem(name: string, body: EquipItemApiBody): Promise<EquipItemApiResult> {
-    return this.httpClient.post<EquipItemApiResult>(`/my/${name}/action/equip`, {
+  /** Equip multiple items on your character.
+   * The cooldown will be 3 seconds multiplied by the number of different items equipped. */
+  public equipItems(name: string, body: EquipItemsApiBody): Promise<EquipItemsApiResult> {
+    return this.httpClient.post<EquipItemsApiResult>(`/my/${name}/action/equip`, {
       body,
       isSecure: true,
     });
   }
 
-  /** Unequip an item on your character. */
-  public unequipItem(name: string, body: UnequipItemApiBody): Promise<UnequipItemApiResult> {
-    return this.httpClient.post<UnequipItemApiResult>(`/my/${name}/action/unequip`, {
+  /** Unequip multiple items on your character.
+   * The cooldown will be 3 seconds multiplied by the number of different items unequipped. */
+  public unequipItems(name: string, body: UnequipItemsApiBody): Promise<UnequipItemsApiResult> {
+    return this.httpClient.post<UnequipItemsApiResult>(`/my/${name}/action/unequip`, {
       body,
       isSecure: true,
     });
@@ -135,7 +145,8 @@ export class ArtifactsMyCharactersApi {
     });
   }
 
-  /** Deposit multiple items in a bank on the character's map. The cooldown will be 3 seconds multiplied by the number of different items deposited. */
+  /** Deposit multiple items in a bank on the character's map.
+   * The cooldown will be 3 seconds multiplied by the number of different items deposited. */
   public depositBankItem(
     name: string,
     body: DepositBankItemApiBody,
@@ -146,7 +157,8 @@ export class ArtifactsMyCharactersApi {
     });
   }
 
-  /** Take items from your bank and put them in the character's inventory. The cooldown will be 3 seconds multiplied by the number of different items withdrawn. */
+  /** Take items from your bank and put them in the character's inventory.
+   * The cooldown will be 3 seconds multiplied by the number of different items withdrawn. */
   public withdrawBankItem(
     name: string,
     body: WithdrawBankItemApiBody,
@@ -219,13 +231,13 @@ export class ArtifactsMyCharactersApi {
     );
   }
 
-  /** Create a sell order at the Grand Exchange on the character's map. Please note there is a 3% listing tax, charged at the time of posting, on the total price. */
+  /** Create a sell order at the Grand Exchange on the character's map. */
   public createGrandExchangeSellOrder(
     name: string,
     body: CreateGrandExchangeSellOrderApiBody,
   ): Promise<CreateGrandExchangeSellOrderApiResult> {
     return this.httpClient.post<CreateGrandExchangeSellOrderApiResult>(
-      `/my/${name}/action/grandexchange/sell`,
+      `/my/${name}/action/grandexchange/create_sell_order`,
       {
         body,
         isSecure: true,
@@ -233,13 +245,51 @@ export class ArtifactsMyCharactersApi {
     );
   }
 
-  /** Cancel a sell order at the Grand Exchange on the character's map. */
-  public cancelGrandExchangeSellOrder(
+  /** Cancel an order (sell or buy) at the Grand Exchange on the character's map.
+
+    For sell orders: Items are returned to your inventory.
+    For buy orders: Gold is refunded to your character. */
+  public cancelGrandExchangeOrder(
     name: string,
-    body: CancelGrandExchangeSellOrderApiBody,
-  ): Promise<CancelGrandExchangeSellOrderApiResult> {
-    return this.httpClient.post<CancelGrandExchangeSellOrderApiResult>(
+    body: CancelGrandExchangeOrderApiBody,
+  ): Promise<CancelGrandExchangeOrderApiResult> {
+    return this.httpClient.post<CancelGrandExchangeOrderApiResult>(
       `/my/${name}/action/grandexchange/cancel`,
+      {
+        body,
+        isSecure: true,
+      },
+    );
+  }
+
+  /** Create a buy order at the Grand Exchange on the character's map.
+
+    The total gold (price * quantity) is locked when creating the order.
+    Other players can then sell items to fulfill your order.
+    Items will be delivered to your pending items when the order is filled. */
+  public createGrandExchangeBuyOrder(
+    name: string,
+    body: CreateGrandExchangeBuyOrderApiBody
+  ): Promise<CreateGrandExchangeBuyOrderApiResult> {
+    return this.httpClient.post<CreateGrandExchangeBuyOrderApiResult>(
+      `/my/${name}/action/grandexchange/create_buy_order`,
+      {
+        body,
+        isSecure: true,
+      },
+    );
+  }
+
+  /** Sell items to an existing buy order at the Grand Exchange on the character's map.
+
+    You will receive the gold immediately.
+    The buyer will receive the items in their pending items. */
+  public fillGrandExchange(
+    name: string,
+    body: FillGrandExchangeApiBody
+  ): Promise<FillGrandExchangeApiResult> {
+    return this.httpClient.post<FillGrandExchangeApiResult>(
+      `/my/${name}/action/grandexchange/fill`,
       {
         body,
         isSecure: true,
@@ -291,10 +341,18 @@ export class ArtifactsMyCharactersApi {
     });
   }
 
-  /** Give items to another character in your account on the same map. The cooldown will be 3 seconds multiplied by the number of different items given. */
+  /** Give items to another character in your account on the same map.
+   * The cooldown will be 3 seconds multiplied by the number of different items given. */
   public giveItems(name: string, body: GiveItemsApiBody): Promise<GiveItemsApiResult> {
     return this.httpClient.post<GiveItemsApiResult>(`/my/${name}/action/give/item`, {
       body,
+      isSecure: true,
+    });
+  }
+
+  /** Claim a pending item with a specific character. */
+  public claimPendingItem(id: string, name: string): Promise<ClaimPendingItemApiResult> {
+    return this.httpClient.post<ClaimPendingItemApiResult>(`/my/${name}/action/claim_item/${id}`, {
       isSecure: true,
     });
   }
@@ -310,6 +368,14 @@ export class ArtifactsMyCharactersApi {
   /** Change the skin of your character. */
   public changeSkin(name: string, body: ChangeSkinApiBody): Promise<ChangeSkinApiResult> {
     return this.httpClient.post<ChangeSkinApiResult>(`/my/${name}/action/change_skin`, {
+      body,
+      isSecure: true,
+    });
+  }
+
+  /** Rename a character. An active membership is required. */
+  public rename(name: string, body: RenameApiBody): Promise<RenameApiResult> {
+    return this.httpClient.post<RenameApiResult>(`/my/${name}/action/rename`, {
       body,
       isSecure: true,
     });

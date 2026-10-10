@@ -10,7 +10,7 @@ import {
 export class ArtifactsGrandExchangeApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
-  /** Fetch the sales history of the item for the last 7 days. */
+  /** Fetch the sales history of the item for the last 7 days (buy and sell orders). */
   public getHistory(
     code: string,
     params: GetGrandExchangeSellHistoryApiQuery = {},
@@ -23,7 +23,10 @@ export class ArtifactsGrandExchangeApi {
     );
   }
 
-  /** Fetch all sell orders. */
+  /** Fetch all sell orders (sell and buy orders).
+ 
+    Use the type parameter to filter by order type;
+    when using account, type is required to keep account searches explicit.*/
   public getAll(
     params: GetGrandExchangeSellOrdersApiQuery = {},
   ): Promise<GetGrandExchangeSellOrdersApiResult> {
@@ -32,7 +35,7 @@ export class ArtifactsGrandExchangeApi {
     });
   }
 
-  /** Retrieve the sell order of a item. */
+  /** Retrieve a specific order by ID. */
   public get(id: string): Promise<GetGrandExchangeSellOrderApiResult> {
     return this.httpClient.get<GetGrandExchangeSellOrderApiResult>(`/grandexchange/orders/${id}`);
   }

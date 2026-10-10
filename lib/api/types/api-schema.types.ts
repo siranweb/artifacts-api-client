@@ -72,10 +72,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Get Ge Sell Orders
-     * @description Fetch your sell orders details.
+     * Get Ge Orders
+     * @description Fetch your orders details (sell and buy orders).
      */
-    get: operations['get_ge_sell_orders_my_grandexchange_orders_get'];
+    get: operations['get_ge_orders_my_grandexchange_orders_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -92,10 +92,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Get Ge Sell History
-     * @description Fetch your sales history of the last 7 days.
+     * Get Ge History
+     * @description Fetch your transaction history of the last 7 days (buy and sell orders).
      */
-    get: operations['get_ge_sell_history_my_grandexchange_history_get'];
+    get: operations['get_ge_history_my_grandexchange_history_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -124,6 +124,49 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/my/pending_items': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Pending Items
+     * @description Retrieve all unclaimed pending items for your account.
+     *
+     *     These are items from various sources (achievements, grand exchange, events, etc.)
+     *     that can be claimed by any character on your account using /my/{name}/action/claim/{id}.
+     */
+    get: operations['get_pending_items_my_pending_items_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/rates': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Rate Limits
+     * @description Get all rate limits.
+     */
+    get: operations['get_rate_limits_my_rates_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/my/change_password': {
     parameters: {
       query?: never;
@@ -138,6 +181,169 @@ export interface paths {
      * @description Change your account password. Changing the password reset the account token.
      */
     post: operations['change_password_my_change_password_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/change_email': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Change Email
+     * @description Change your account email.
+     */
+    post: operations['change_email_my_change_email_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/subscription': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get My Subscription
+     * @description Get current subscription details.
+     */
+    get: operations['get_my_subscription_my_subscription_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/subscribe/stripe': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Subscribe with Stripe
+     * @description Subscribe to become a member and unlock the benefits tied to your selected plan.
+     *     You will receive a secure Stripe checkout URL to complete the payment.
+     */
+    post: operations['buy_subscription_my_subscribe_stripe_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/subscribe/member_token': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Subscribe With Member Token
+     * @description Redeem a member token to start or extend membership by 30 days.
+     *     Member tokens are manually granted as rewards for events.
+     *     Member tokens cannot be redeemed while a Stripe subscription is active.
+     */
+    post: operations['subscribe_with_member_token_my_subscribe_member_token_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/subscribe/cancel': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Cancel Subscription
+     * @description Cancel subscription at the end of the current billing period.
+     */
+    post: operations['cancel_subscription_my_subscribe_cancel_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/purchase_history': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get My Purchase History
+     * @description List all purchases (subscriptions and gem packs).
+     */
+    get: operations['get_my_purchase_history_my_purchase_history_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/gems_history': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get My Gems History
+     * @description List all gem credits and debits.
+     */
+    get: operations['get_my_gems_history_my_gems_history_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/buy_gems': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Buy Gems
+     * @description Purchase gems. Returns a Stripe checkout URL for payment.
+     */
+    post: operations['buy_gems_my_buy_gems_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -217,7 +423,8 @@ export interface paths {
     put?: never;
     /**
      * Action Equip Item
-     * @description Equip an item on your character.
+     * @description Equip multiple items on your character.
+     *     The cooldown will be 3 seconds multiplied by the number of different items equipped.
      */
     post: operations['action_equip_item_my__name__action_equip_post'];
     delete?: never;
@@ -237,7 +444,8 @@ export interface paths {
     put?: never;
     /**
      * Action Unequip Item
-     * @description Unequip an item on your character.
+     * @description Unequip multiple items on your character.
+     *     The cooldown will be 3 seconds multiplied by the number of different items unequipped.
      */
     post: operations['action_unequip_item_my__name__action_unequip_post'];
     delete?: never;
@@ -509,7 +717,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/my/{name}/action/grandexchange/sell': {
+  '/my/{name}/action/grandexchange/create_sell_order': {
     parameters: {
       query?: never;
       header?: never;
@@ -521,9 +729,8 @@ export interface paths {
     /**
      * Action Ge Create Sell Order
      * @description Create a sell order at the Grand Exchange on the character's map.
-     *     Please note there is a 3% listing tax, charged at the time of posting, on the total price.
      */
-    post: operations['action_ge_create_sell_order_my__name__action_grandexchange_sell_post'];
+    post: operations['action_ge_create_sell_order_my__name__action_grandexchange_create_sell_order_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -540,10 +747,60 @@ export interface paths {
     get?: never;
     put?: never;
     /**
-     * Action Ge Cancel Sell Order
-     * @description Cancel a sell order at the Grand Exchange on the character's map.
+     * Action Ge Cancel Order
+     * @description Cancel an order (sell or buy) at the Grand Exchange on the character's map.
+     *
+     *     For sell orders: Items are returned to your inventory.
+     *     For buy orders: Gold is refunded to your character.
      */
-    post: operations['action_ge_cancel_sell_order_my__name__action_grandexchange_cancel_post'];
+    post: operations['action_ge_cancel_order_my__name__action_grandexchange_cancel_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/{name}/action/grandexchange/create_buy_order': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Ge Create Buy Order
+     * @description Create a buy order at the Grand Exchange on the character's map.
+     *
+     *     The total gold (price * quantity) is locked when creating the order.
+     *     Other players can then sell items to fulfill your order.
+     *     Items will be delivered to your pending items when the order is filled.
+     */
+    post: operations['action_ge_create_buy_order_my__name__action_grandexchange_create_buy_order_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/{name}/action/grandexchange/fill': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Ge Fill
+     * @description Sell items to an existing buy order at the Grand Exchange on the character's map.
+     *
+     *     You will receive the gold immediately.
+     *     The buyer will receive the items in their pending items.
+     */
+    post: operations['action_ge_fill_my__name__action_grandexchange_fill_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -691,6 +948,26 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/my/{name}/action/claim_item/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Claim Pending Item
+     * @description Claim a pending item with a specific character.
+     */
+    post: operations['action_claim_pending_item_my__name__action_claim_item__id__post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/my/{name}/action/delete': {
     parameters: {
       query?: never;
@@ -725,6 +1002,26 @@ export interface paths {
      * @description Change the skin of your character.
      */
     post: operations['action_change_skin_my__name__action_change_skin_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/my/{name}/action/rename': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Action Rename
+     * @description Rename a character. An active membership is required.
+     */
+    post: operations['action_rename_my__name__action_rename_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -791,6 +1088,46 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/accounts/{account}/achievements': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Account Achievements
+     * @description Retrieve the achievements of a account.
+     */
+    get: operations['get_account_achievements_accounts__account__achievements_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/accounts/{account}/characters': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Account Characters
+     * @description Account character lists.
+     */
+    get: operations['get_account_characters_accounts__account__characters_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/accounts/create': {
     parameters: {
       query?: never;
@@ -842,46 +1179,6 @@ export interface paths {
      * @description Reset password with a token. Use /forgot_password to get a token by email.
      */
     post: operations['reset_password_accounts_reset_password_post'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/accounts/{account}/achievements': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * Get Account Achievements
-     * @description Retrieve the achievements of a account.
-     */
-    get: operations['get_account_achievements_accounts__account__achievements_get'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/accounts/{account}/characters': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /**
-     * Get Account Characters
-     * @description Account character lists.
-     */
-    get: operations['get_account_characters_accounts__account__characters_get'];
-    put?: never;
-    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -988,6 +1285,86 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/skins': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get All Skins
+     * @description List of all skins available in the game.
+     */
+    get: operations['get_all_skins_skins_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/skins/{code}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Skin
+     * @description Retrieve the details of a skin.
+     */
+    get: operations['get_skin_skins__code__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/season_rewards': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get All Season Rewards
+     * @description List of all rewards for the current season.
+     */
+    get: operations['get_all_season_rewards_season_rewards_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/season_rewards/{code}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Season Rewards By Code
+     * @description List all season rewards matching a specific code.
+     */
+    get: operations['get_season_rewards_by_code_season_rewards__code__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/characters/create': {
     parameters: {
       query?: never;
@@ -1022,6 +1399,29 @@ export interface paths {
      * @description Delete character on your account.
      */
     post: operations['delete_character_characters_delete_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/characters/{name}/stats': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Character Stats
+     * @description Retrieve gameplay statistics for a character.
+     *
+     *     Stats are only visible if the character's account has an active subscription.
+     *     Statistics are still collected for all accounts regardless of subscription status.
+     */
+    get: operations['get_character_stats_characters__name__stats_get'];
+    put?: never;
+    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -1148,31 +1548,6 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/events/spawn': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /**
-     * Spawn Event
-     * @description Spawn a specific event by code consuming 1 event token.
-     *
-     *     Rules:
-     *       - Maximum active events defined by utils.config.max_active_events().
-     *       - Event must not already be active.
-     *       - Member or founder account required.
-     */
-    post: operations['spawn_event_events_spawn_post'];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   '/grandexchange/history/{code}': {
     parameters: {
       query?: never;
@@ -1181,10 +1556,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Get Ge Sell History
-     * @description Fetch the sales history of the item for the last 7 days.
+     * Get Ge History
+     * @description Fetch the transaction history of the item for the last 7 days (buy and sell orders).
      */
-    get: operations['get_ge_sell_history_grandexchange_history__code__get'];
+    get: operations['get_ge_history_grandexchange_history__code__get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -1201,10 +1576,13 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Get Ge Sell Orders
-     * @description Fetch all sell orders.
+     * Get Ge Orders
+     * @description Fetch all orders (sell and buy orders).
+     *
+     *     Use the `type` parameter to filter by order type; when using `account`, `type`
+     *     is required to keep account searches explicit.
      */
-    get: operations['get_ge_sell_orders_grandexchange_orders_get'];
+    get: operations['get_ge_orders_grandexchange_orders_get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -1221,10 +1599,10 @@ export interface paths {
       cookie?: never;
     };
     /**
-     * Get Ge Sell Order
-     * @description Retrieve the sell order of a item.
+     * Get Ge Order
+     * @description Retrieve a specific order by ID.
      */
-    get: operations['get_ge_sell_order_grandexchange_orders__id__get'];
+    get: operations['get_ge_order_grandexchange_orders__id__get'];
     put?: never;
     post?: never;
     delete?: never;
@@ -1513,6 +1891,66 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/raids': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get All Raids
+     * @description Fetch the list of all raids.
+     */
+    get: operations['get_all_raids_raids_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/raids/{code}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Raid
+     * @description Retrieve the details of a specific raid.
+     */
+    get: operations['get_raid_raids__code__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/raids/{code}/leaderboard': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Raid Leaderboard
+     * @description Retrieve the leaderboard for the active or latest raid instance.
+     */
+    get: operations['get_raid_leaderboard_raids__code__leaderboard_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/resources': {
     parameters: {
       query?: never;
@@ -1633,7 +2071,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/simulation/fight_simulation': {
+  '/simulation/fight': {
     parameters: {
       query?: never;
       header?: never;
@@ -1647,7 +2085,7 @@ export interface paths {
      * @description Simulate combat with fake characters against a monster multiple times.
      *     Member or founder account required.
      */
-    post: operations['fight_simulation_simulation_fight_simulation_post'];
+    post: operations['fight_simulation_simulation_fight_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -1674,6 +2112,129 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/gems_shop/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get Catalog
+     * @description Return the gems shop catalog.
+     */
+    get: operations['get_catalog_gems_shop__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/gems_shop/skin': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Buy Skin
+     * @description Buy a skin from the gems shop using gems.
+     */
+    post: operations['buy_skin_gems_shop_skin_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/gems_shop/spawn_event': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Buy Spawn Event
+     * @description Spawn an event from the gems shop using gems.
+     */
+    post: operations['buy_spawn_event_gems_shop_spawn_event_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/gems_shop/subscription': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Buy Subscription
+     * @description Buy or extend membership by 30 days using gems. Unavailable while a Stripe subscription is active.
+     */
+    post: operations['buy_subscription_gems_shop_subscription_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/gems_shop/buy_custom_design': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Buy Custom Design
+     * @description Buy a custom design using gems.
+     */
+    post: operations['buy_custom_design_gems_shop_buy_custom_design_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/game_assistant/ask': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Ask Game Assistant
+     * @description Ask the game assistant a question about game mechanics or public API usage.
+     *     An active membership is required. Members receive a limited number of free
+     *     questions per day. When no free question is available, the request can spend
+     *     1 gem with pay_with_gems=true.
+     */
+    post: operations['ask_game_assistant_game_assistant_ask_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1688,7 +2249,34 @@ export interface components {
        */
       conditions?: components['schemas']['ConditionSchema'][] | null;
     };
-    /** AccountAchievementSchema */
+    /**
+     * AccountAchievementObjectiveSchema
+     * @description Schema for a single objective within an account achievement, including progress.
+     */
+    AccountAchievementObjectiveSchema: {
+      /** @description Type of objective. */
+      type: components['schemas']['AchievementType'];
+      /**
+       * Target
+       * @description Target of the objective (e.g., item code, monster code).
+       */
+      target?: string | null;
+      /**
+       * Progress
+       * @description Current progress for this objective.
+       * @default 0
+       */
+      progress: number;
+      /**
+       * Total
+       * @description Total required for this objective.
+       */
+      total: number;
+    };
+    /**
+     * AccountAchievementSchema
+     * @description Full achievement data with progress - for API responses.
+     */
     AccountAchievementSchema: {
       /**
        * Name
@@ -1710,29 +2298,17 @@ export interface components {
        * @description Points of the achievement. Used for the leaderboard.
        */
       points: number;
-      /** @description Type of achievement. */
-      type: components['schemas']['AchievementType'];
       /**
-       * Target
-       * @description Target of the achievement.
+       * Objectives
+       * @description List of objectives with progress.
        */
-      target?: string | null;
-      /**
-       * Total
-       * @description Total to do.
-       */
-      total: number;
+      objectives: components['schemas']['AccountAchievementObjectiveSchema'][];
       /** @description Rewards. */
       rewards: components['schemas']['AchievementRewardsSchema'];
       /**
-       * Current
-       * @description Current progress.
-       */
-      current: number;
-      /**
        * Completed At
        * Format: date-time
-       * @description Completed at.
+       * @description Completion timestamp.
        */
       completed_at?: string | null;
     };
@@ -1748,7 +2324,7 @@ export interface components {
        * @description Member status.
        */
       member: boolean;
-      /** @description Account status. */
+      /** @description Account status. Status for contributors during the alpha and beta phases. It is no longer possible to obtain founder status. */
       status: components['schemas']['AccountStatus'];
       /**
        * Badges
@@ -1792,13 +2368,22 @@ export interface components {
        * @description Account name.
        */
       account: string;
-      /** @description Member status. */
-      status: components['schemas']['AccountStatus'];
+      /**
+       * Member
+       * @description Member status.
+       */
+      member: boolean;
       /**
        * Achievements Points
        * @description Achievements points.
        */
       achievements_points: number;
+      /**
+       * Completed At
+       * Format: date-time
+       * @description Datetime when all achievement points were completed.
+       */
+      completed_at?: string | null;
       /**
        * Gold
        * @description Gold in the account.
@@ -1814,20 +2399,50 @@ export interface components {
      * AccountStatus
      * @enum {string}
      */
-    AccountStatus: 'standard' | 'founder' | 'gold_founder' | 'vip_founder';
+    AccountStatus: 'standard' | 'founder' | 'gold_founder' | 'vip_founder' | 'goblin1';
+    /**
+     * AchievementObjectiveSchema
+     * @description Schema for a single objective within an achievement.
+     */
+    AchievementObjectiveSchema: {
+      /** @description Type of objective. */
+      type: components['schemas']['AchievementType'];
+      /**
+       * Target
+       * @description Target of the objective (e.g., item code, monster code).
+       */
+      target?: string | null;
+      /**
+       * Total
+       * @description Total required for this objective.
+       */
+      total: number;
+    };
     /** AchievementResponseSchema */
     AchievementResponseSchema: {
       data: components['schemas']['AchievementSchema'];
     };
-    /** AchievementRewardsSchema */
+    /**
+     * AchievementRewardsSchema
+     * @description Schema for achievement rewards including gold and items.
+     */
     AchievementRewardsSchema: {
       /**
        * Gold
        * @description Gold rewards.
+       * @default 0
        */
       gold: number;
+      /**
+       * Items
+       * @description Item rewards.
+       */
+      items?: components['schemas']['RewardItemSchema'][] | null;
     };
-    /** AchievementSchema */
+    /**
+     * AchievementSchema
+     * @description Schema for an achievement definition.
+     */
     AchievementSchema: {
       /**
        * Name
@@ -1849,18 +2464,11 @@ export interface components {
        * @description Points of the achievement. Used for the leaderboard.
        */
       points: number;
-      /** @description Type of achievement. */
-      type: components['schemas']['AchievementType'];
       /**
-       * Target
-       * @description Target of the achievement.
+       * Objectives
+       * @description List of objectives that must be completed.
        */
-      target?: string | null;
-      /**
-       * Total
-       * @description Total to do.
-       */
-      total: number;
+      objectives: components['schemas']['AchievementObjectiveSchema'][];
       /** @description Rewards. */
       rewards: components['schemas']['AchievementRewardsSchema'];
     };
@@ -1877,7 +2485,9 @@ export interface components {
       | 'recycling'
       | 'task'
       | 'other'
-      | 'use';
+      | 'use'
+      | 'npc_buy'
+      | 'npc_sell';
     /**
      * ActionType
      * @enum {string}
@@ -1885,11 +2495,14 @@ export interface components {
     ActionType:
       | 'movement'
       | 'fight'
+      | 'raid_fight'
       | 'multi_fight'
       | 'crafting'
       | 'gathering'
       | 'buy_ge'
       | 'sell_ge'
+      | 'create_buy_order_ge'
+      | 'fill_buy_order_ge'
       | 'buy_npc'
       | 'sell_npc'
       | 'cancel_ge'
@@ -1907,9 +2520,16 @@ export interface components {
       | 'buy_bank_expansion'
       | 'give_item'
       | 'give_gold'
+      | 'raid_deposit'
       | 'change_skin'
       | 'rename'
-      | 'transition';
+      | 'transition'
+      | 'claim_item'
+      | 'sandbox_give_gold'
+      | 'sandbox_give_item'
+      | 'sandbox_give_xp'
+      | 'sandbox_clear_cooldown'
+      | 'sandbox_teleport';
     /** ActiveCharacterSchema */
     ActiveCharacterSchema: {
       /**
@@ -1922,8 +2542,11 @@ export interface components {
        * @description Account name.
        */
       account: string;
-      /** @description Character skin code. */
-      skin: components['schemas']['CharacterSkin'];
+      /**
+       * Skin
+       * @description Character skin code.
+       */
+      skin: string;
       /**
        * X
        * @description Character x coordinate.
@@ -2006,21 +2629,44 @@ export interface components {
        * @description Your desired character name. It's unique and all players can see it.
        */
       name: string;
-      /** @description Your desired skin. Skins unlocked by default: 'men1', 'men2', 'men3', 'women1', 'women2', 'women3'. */
-      skin: components['schemas']['CharacterSkin'];
+      /**
+       * Skin
+       * @description Your desired skin.
+       */
+      skin: string;
     };
-    /** BadgeConditionSchema */
-    BadgeConditionSchema: {
+    /** AssistantAnswerDataSchema */
+    AssistantAnswerDataSchema: {
       /**
-       * Code
-       * @description Code of the condition.
+       * Answer
+       * @description The assistant's answer.
        */
-      code: string;
+      answer: string;
+      /** @description Updated assistant rate limit after this request. */
+      assistant: components['schemas']['RateLimitScopeSchema'];
       /**
-       * Quantity
-       * @description Quantity of the condition (if any).
+       * Paid With Gems
+       * @description Whether this question cost 1 gem.
        */
-      quantity?: number | null;
+      paid_with_gems: boolean;
+    };
+    /** AssistantAnswerSchema */
+    AssistantAnswerSchema: {
+      data: components['schemas']['AssistantAnswerDataSchema'];
+    };
+    /** AssistantQuestionSchema */
+    AssistantQuestionSchema: {
+      /**
+       * Question
+       * @description Your question
+       */
+      question: string;
+      /**
+       * Pay With Gems
+       * @description Spend 1 gem if no free member question is available.
+       * @default false
+       */
+      pay_with_gems: boolean;
     };
     /** BadgeResponseSchema */
     BadgeResponseSchema: {
@@ -2043,11 +2689,6 @@ export interface components {
        * @description Description of the badge.
        */
       description: string;
-      /**
-       * Conditions
-       * @description Conditions to get the badge.
-       */
-      conditions: components['schemas']['BadgeConditionSchema'][];
     };
     /** BankExtensionSchema */
     BankExtensionSchema: {
@@ -2131,8 +2772,61 @@ export interface components {
        */
       gold: number;
     };
-    /** ChangePassword */
-    ChangePassword: {
+    /** BuyCustomDesignRequestSchema */
+    BuyCustomDesignRequestSchema: {
+      /**
+       * Code
+       * @description Code of the custom design to purchase.
+       */
+      code: string;
+    };
+    /** BuySkinRequestSchema */
+    BuySkinRequestSchema: {
+      /**
+       * Code
+       * @description Code of the skin to purchase.
+       */
+      code: string;
+    };
+    /** BuySkinResponseDataSchema */
+    BuySkinResponseDataSchema: {
+      /**
+       * Skins
+       * @description Updated list of owned skins.
+       */
+      skins: string[];
+      /**
+       * Skin
+       * @description Code of the purchased skin.
+       */
+      skin: string;
+      /**
+       * Gems
+       * @description Remaining gem balance.
+       */
+      gems: number;
+    };
+    /** BuySkinResponseSchema */
+    BuySkinResponseSchema: {
+      data: components['schemas']['BuySkinResponseDataSchema'];
+    };
+    /** ChangeEmailSchema */
+    ChangeEmailSchema: {
+      /**
+       * Current Email
+       * Format: email
+       * @description Your current email.
+       */
+      current_email: string;
+      /**
+       * New Email
+       * Format: email
+       * @description New email.
+       */
+      new_email: string;
+    };
+    /** ChangePasswordSchema */
+    ChangePasswordSchema: {
       /**
        * Current Password
        * @description Your password.
@@ -2158,8 +2852,11 @@ export interface components {
     };
     /** ChangeSkinCharacterSchema */
     ChangeSkinCharacterSchema: {
-      /** @description Your desired skin. Skins unlocked by default: 'men1', 'men2', 'men3', 'women1', 'women2', 'women3'. */
-      skin: components['schemas']['CharacterSkin'];
+      /**
+       * Skin
+       * @description Your desired skin.
+       */
+      skin: string;
     };
     /** ChangeSkinResponseSchema */
     ChangeSkinResponseSchema: {
@@ -2223,8 +2920,11 @@ export interface components {
        * @description Account name.
        */
       account: string;
-      /** @description Member status. */
-      status: components['schemas']['AccountStatus'];
+      /**
+       * Member
+       * @description Member status.
+       */
+      member: boolean;
       /**
        * Skin
        * @description Character skin code.
@@ -2350,7 +3050,7 @@ export interface components {
        * Path
        * @description Path taken from start to destination (list of coordinates)
        */
-      path: [number, number][];
+      path: number[][];
       /** @description Character details. */
       character: components['schemas']['CharacterSchema'];
     };
@@ -2418,8 +3118,11 @@ export interface components {
        * @description Account name.
        */
       account: string;
-      /** @description Character skin code. */
-      skin: components['schemas']['CharacterSkin'];
+      /**
+       * Skin
+       * @description Character skin code.
+       */
+      skin: string;
       /**
        * Level
        * @description Combat level.
@@ -2822,22 +3525,36 @@ export interface components {
        * Inventory
        * @description List of inventory slots.
        */
-      inventory?: components['schemas']['InventorySlot'][];
+      inventory?: components['schemas']['InventorySlotSchema'][];
     };
-    /**
-     * CharacterSkin
-     * @enum {string}
-     */
-    CharacterSkin:
-      | 'men1'
-      | 'men2'
-      | 'men3'
-      | 'women1'
-      | 'women2'
-      | 'women3'
-      | 'corrupted1'
-      | 'zombie1'
-      | 'marauder1';
+    /** CharacterStatsResponseSchema */
+    CharacterStatsResponseSchema: {
+      data: components['schemas']['CharacterStatsSchema'];
+    };
+    /** CharacterStatsSchema */
+    CharacterStatsSchema: {
+      /** Monsters Killed */
+      monsters_killed?: {
+        [key: string]: number;
+      };
+      /** Resources Gathered */
+      resources_gathered?: {
+        [key: string]: number;
+      };
+      /** Items Crafted */
+      items_crafted?: {
+        [key: string]: number;
+      };
+      /** Action Counts */
+      action_counts?: {
+        [key: string]: number;
+      };
+      /**
+       * Deaths
+       * @default 0
+       */
+      deaths: number;
+    };
     /** CharacterTransitionDataSchema */
     CharacterTransitionDataSchema: {
       /** @description Cooldown details */
@@ -2861,6 +3578,46 @@ export interface components {
        */
       data: components['schemas']['CharacterSchema'][];
     };
+    /**
+     * CheckoutResponseSchema
+     * @description Checkout session response.
+     */
+    CheckoutResponseSchema: {
+      /**
+       * Checkout Url
+       * @description Stripe checkout URL for payment.
+       */
+      checkout_url: string;
+      /**
+       * Session Id
+       * @description Stripe checkout session ID.
+       */
+      session_id: string;
+    };
+    /** CheckoutResponseWrapperSchema */
+    CheckoutResponseWrapperSchema: {
+      data: components['schemas']['CheckoutResponseSchema'];
+    };
+    /**
+     * ClaimPendingItemDataSchema
+     * @description Data schema for claim pending item action.
+     */
+    ClaimPendingItemDataSchema: {
+      /** @description Cooldown details. */
+      cooldown: components['schemas']['CooldownSchema'];
+      /** @description The claimed pending item. */
+      item: components['schemas']['PendingItemSchema'];
+      /** @description Character details. */
+      character: components['schemas']['CharacterSchema'];
+    };
+    /**
+     * ClaimPendingItemResponseSchema
+     * @description Response schema for claim pending item action.
+     */
+    ClaimPendingItemResponseSchema: {
+      /** @description Response data containing cooldown, item, and character. */
+      data: components['schemas']['ClaimPendingItemDataSchema'];
+    };
     /** CombatResultSchema */
     CombatResultSchema: {
       /**
@@ -2882,7 +3639,9 @@ export interface components {
        * Character Results
        * @description Character results from combat.
        */
-      character_results: Record<string, never>[];
+      character_results: {
+        [key: string]: unknown;
+      }[];
     };
     /** CombatSimulationDataSchema */
     CombatSimulationDataSchema: {
@@ -3031,273 +3790,130 @@ export interface components {
       /** Data */
       data: components['schemas']['AccountAchievementSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DataPage[AccountLeaderboardSchema] */
     DataPage_AccountLeaderboardSchema_: {
       /** Data */
       data: components['schemas']['AccountLeaderboardSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[AchievementSchema] */
-    DataPage_AchievementSchema_: {
-      /** Data */
-      data: components['schemas']['AchievementSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DataPage[ActiveCharacterSchema] */
     DataPage_ActiveCharacterSchema_: {
       /** Data */
       data: components['schemas']['ActiveCharacterSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[ActiveEventSchema] */
-    DataPage_ActiveEventSchema_: {
-      /** Data */
-      data: components['schemas']['ActiveEventSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[BadgeSchema] */
-    DataPage_BadgeSchema_: {
-      /** Data */
-      data: components['schemas']['BadgeSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DataPage[CharacterLeaderboardSchema] */
     DataPage_CharacterLeaderboardSchema_: {
       /** Data */
       data: components['schemas']['CharacterLeaderboardSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
+      pages: number;
     };
-    /** DataPage[DropRateSchema] */
-    DataPage_DropRateSchema_: {
+    /** DataPage[GEOrderHistorySchema] */
+    DataPage_GEOrderHistorySchema_: {
       /** Data */
-      data: components['schemas']['DropRateSchema'][];
+      data: components['schemas']['GEOrderHistorySchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[EffectSchema] */
-    DataPage_EffectSchema_: {
-      /** Data */
-      data: components['schemas']['EffectSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[EventSchema] */
-    DataPage_EventSchema_: {
-      /** Data */
-      data: components['schemas']['EventSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DataPage[GEOrderSchema] */
     DataPage_GEOrderSchema_: {
       /** Data */
       data: components['schemas']['GEOrderSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[GeOrderHistorySchema] */
-    DataPage_GeOrderHistorySchema_: {
-      /** Data */
-      data: components['schemas']['GeOrderHistorySchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[ItemSchema] */
-    DataPage_ItemSchema_: {
-      /** Data */
-      data: components['schemas']['ItemSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DataPage[LogSchema] */
     DataPage_LogSchema_: {
       /** Data */
       data: components['schemas']['LogSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
+      pages: number;
     };
-    /** DataPage[MapSchema] */
-    DataPage_MapSchema_: {
+    /** DataPage[PendingItemSchema] */
+    DataPage_PendingItemSchema_: {
       /** Data */
-      data: components['schemas']['MapSchema'][];
+      data: components['schemas']['PendingItemSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
+      pages: number;
     };
-    /** DataPage[MonsterSchema] */
-    DataPage_MonsterSchema_: {
+    /** DataPage[RaidLeaderboardEntrySchema] */
+    DataPage_RaidLeaderboardEntrySchema_: {
       /** Data */
-      data: components['schemas']['MonsterSchema'][];
+      data: components['schemas']['RaidLeaderboardEntrySchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[NPCItem] */
-    DataPage_NPCItem_: {
-      /** Data */
-      data: components['schemas']['NPCItem'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[NPCSchema] */
-    DataPage_NPCSchema_: {
-      /** Data */
-      data: components['schemas']['NPCSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[ResourceSchema] */
-    DataPage_ResourceSchema_: {
-      /** Data */
-      data: components['schemas']['ResourceSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DataPage[SimpleItemSchema] */
     DataPage_SimpleItemSchema_: {
       /** Data */
       data: components['schemas']['SimpleItemSchema'][];
       /** Total */
-      total?: number | null;
+      total: number;
       /** Page */
-      page?: number | null;
+      page: number;
       /** Size */
-      size?: number | null;
+      size: number;
       /** Pages */
-      pages?: number | null;
-    };
-    /** DataPage[TaskFullSchema] */
-    DataPage_TaskFullSchema_: {
-      /** Data */
-      data: components['schemas']['TaskFullSchema'][];
-      /** Total */
-      total?: number | null;
-      /** Page */
-      page?: number | null;
-      /** Size */
-      size?: number | null;
-      /** Pages */
-      pages?: number | null;
+      pages: number;
     };
     /** DeleteCharacterSchema */
     DeleteCharacterSchema: {
@@ -3427,17 +4043,6 @@ export interface components {
      * @enum {string}
      */
     EffectType: 'equipment' | 'consumable' | 'combat';
-    /** EquipRequestSchema */
-    EquipRequestSchema: {
-      /** @description Cooldown details. */
-      cooldown: components['schemas']['CooldownSchema'];
-      /** @description Item slot. */
-      slot: components['schemas']['ItemSlot'];
-      /** @description Item details. */
-      item: components['schemas']['ItemSchema'];
-      /** @description Player details. */
-      character: components['schemas']['CharacterSchema'];
-    };
     /** EquipSchema */
     EquipSchema: {
       /**
@@ -3454,9 +4059,28 @@ export interface components {
        */
       quantity: number;
     };
+    /** EquipmentItemSchema */
+    EquipmentItemSchema: {
+      /** @description Item slot. */
+      slot: components['schemas']['ItemSlot'];
+      /** @description Item details. */
+      item: components['schemas']['ItemSchema'];
+    };
     /** EquipmentResponseSchema */
     EquipmentResponseSchema: {
-      data: components['schemas']['EquipRequestSchema'];
+      data: components['schemas']['EquipmentTransactionSchema'];
+    };
+    /** EquipmentTransactionSchema */
+    EquipmentTransactionSchema: {
+      /** @description Cooldown details. */
+      cooldown: components['schemas']['CooldownSchema'];
+      /**
+       * Items
+       * @description Items details.
+       */
+      items: components['schemas']['EquipmentItemSchema'][];
+      /** @description Player details. */
+      character: components['schemas']['CharacterSchema'];
     };
     /** EventContentSchema */
     EventContentSchema: {
@@ -3509,7 +4133,7 @@ export interface components {
        */
       code: string;
       /** @description Content of the event. */
-      content: components['schemas']['EventContentSchema'];
+      content?: components['schemas']['EventContentSchema'];
       /**
        * Maps
        * @description Map list of the event.
@@ -3525,6 +4149,25 @@ export interface components {
        * @description Rate spawn of the event. (1/rate every minute)
        */
       rate: number;
+      /**
+       * Cooldown
+       * @description Cooldown in minutes before the event can be spawned with gems.
+       * @default 0
+       */
+      cooldown: number;
+      /**
+       * Cooldown Expiration
+       * Format: date-time
+       * @description Gems spawn cooldown expiration datetime (null if not on cooldown).
+       */
+      cooldown_expiration?: string | null;
+      /**
+       * Price
+       * @description Price in gems to spawn the event. Null if not purchasable.
+       */
+      price?: number | null;
+      /** @description Transition to add to the map when event is active. */
+      transition?: components['schemas']['TransitionSchema'];
     };
     /** FakeCharacterSchema */
     FakeCharacterSchema: {
@@ -3626,16 +4269,39 @@ export interface components {
       /**
        * Participants
        * @description Optional list of additional character names to include in the fight (max 2 additional characters).
-       * @default []
        */
-      participants: string[];
+      participants?: string[];
     };
     /**
      * FightResult
      * @enum {string}
      */
     FightResult: 'win' | 'loss';
-    /** GEBuyOrderSchema */
+    /**
+     * GEBuyOrderCreationSchema
+     * @description Schema for creating a buy order.
+     */
+    GEBuyOrderCreationSchema: {
+      /**
+       * Code
+       * @description Item code.
+       */
+      code: string;
+      /**
+       * Quantity
+       * @description Item quantity.
+       */
+      quantity: number;
+      /**
+       * Price
+       * @description Item price per unit.
+       */
+      price: number;
+    };
+    /**
+     * GEBuyOrderSchema
+     * @description Schema for buying from a sell order.
+     */
     GEBuyOrderSchema: {
       /**
        * Id
@@ -3659,6 +4325,22 @@ export interface components {
     /** GECreateOrderTransactionResponseSchema */
     GECreateOrderTransactionResponseSchema: {
       data: components['schemas']['GEOrderTransactionSchema'];
+    };
+    /**
+     * GEFillBuyOrderSchema
+     * @description Schema for filling a buy order (selling items to a buy order).
+     */
+    GEFillBuyOrderSchema: {
+      /**
+       * Id
+       * @description Buy order id.
+       */
+      id: string;
+      /**
+       * Quantity
+       * @description Item quantity to sell.
+       */
+      quantity: number;
     };
     /** GEOrderCreatedSchema */
     GEOrderCreatedSchema: {
@@ -3693,14 +4375,12 @@ export interface components {
        * @description Total price.
        */
       total_price: number;
-      /**
-       * Tax
-       * @description Listing tax (3%, minimum 1)
-       */
-      tax: number;
     };
-    /** GEOrderCreationrSchema */
-    GEOrderCreationrSchema: {
+    /**
+     * GEOrderCreationSchema
+     * @description Schema for creating a sell order.
+     */
+    GEOrderCreationSchema: {
       /**
        * Code
        * @description Item code.
@@ -3717,6 +4397,45 @@ export interface components {
        */
       price: number;
     };
+    /** GEOrderHistorySchema */
+    GEOrderHistorySchema: {
+      /**
+       * Order Id
+       * @description Order id.
+       */
+      order_id: string;
+      /**
+       * Seller
+       * @description Seller account name.
+       */
+      seller: string;
+      /**
+       * Buyer
+       * @description Buyer account name.
+       */
+      buyer: string;
+      /**
+       * Code
+       * @description Item code.
+       */
+      code: string;
+      /**
+       * Quantity
+       * @description Item quantity.
+       */
+      quantity: number;
+      /**
+       * Price
+       * @description Item price per unit.
+       */
+      price: number;
+      /**
+       * Sold At
+       * Format: date-time
+       * @description Sale datetime.
+       */
+      sold_at: string;
+    };
     /** GEOrderResponseSchema */
     GEOrderResponseSchema: {
       data: components['schemas']['GEOrderSchema'];
@@ -3728,11 +4447,13 @@ export interface components {
        * @description Order id.
        */
       id: string;
+      /** @description Order type (sell or buy). */
+      type: components['schemas']['GEOrderType'];
       /**
-       * Seller
-       * @description Seller account name.
+       * Account
+       * @description Account linked to the order.
        */
-      seller: string;
+      account?: string | null;
       /**
        * Code
        * @description Item code.
@@ -3764,6 +4485,12 @@ export interface components {
       /** @description Character details. */
       character: components['schemas']['CharacterSchema'];
     };
+    /**
+     * GEOrderType
+     * @description Type of Grand Exchange order.
+     * @enum {string}
+     */
+    GEOrderType: 'sell' | 'buy';
     /** GETransactionListSchema */
     GETransactionListSchema: {
       /** @description Cooldown details. */
@@ -3810,44 +4537,233 @@ export interface components {
      * @enum {string}
      */
     GatheringSkill: 'mining' | 'woodcutting' | 'fishing' | 'alchemy';
-    /** GeOrderHistorySchema */
-    GeOrderHistorySchema: {
+    /** GemShopCatalogDataSchema */
+    GemShopCatalogDataSchema: {
       /**
-       * Order Id
-       * @description Order id.
+       * Skins
+       * @description Gem-shop skins.
        */
-      order_id: string;
+      skins: components['schemas']['GemShopSkinCatalogItemSchema'][];
       /**
-       * Seller
-       * @description Seller account name.
+       * Spawn Events
+       * @description Gem-shop event spawns.
        */
-      seller: string;
+      spawn_events: components['schemas']['GemShopSpawnEventCatalogItemSchema'][];
       /**
-       * Buyer
-       * @description Buyer account name.
+       * Subscriptions
+       * @description Gem-shop subscriptions.
        */
-      buyer: string;
+      subscriptions: components['schemas']['GemShopSubscriptionCatalogItemSchema'][];
+      /**
+       * Custom Designs
+       * @description Gem-shop custom designs.
+       */
+      custom_designs: components['schemas']['GemShopCustomDesignCatalogItemSchema'][];
+    };
+    /** GemShopCatalogResponseSchema */
+    GemShopCatalogResponseSchema: {
+      data: components['schemas']['GemShopCatalogDataSchema'];
+    };
+    /** GemShopCustomDesignCatalogItemSchema */
+    GemShopCustomDesignCatalogItemSchema: {
       /**
        * Code
-       * @description Item code.
+       * @description Custom design code.
        */
       code: string;
       /**
-       * Quantity
-       * @description Item quantity.
+       * Name
+       * @description Custom design name.
        */
-      quantity: number;
+      name: string;
+      /**
+       * Description
+       * @description Custom design description.
+       */
+      description: string;
       /**
        * Price
-       * @description Item price per unit.
+       * @description Custom design price in gems.
        */
       price: number;
       /**
-       * Sold At
-       * Format: date-time
-       * @description Sale datetime.
+       * Category
+       * @description Custom design category.
+       * @enum {string}
        */
-      sold_at: string;
+      category: 'npc' | 'item' | 'skin';
+      /**
+       * Unique To Account
+       * @description Whether the resulting content is unique to the buyer.
+       */
+      unique_to_account: boolean;
+    };
+    /** GemShopCustomDesignPurchaseResponseDataSchema */
+    GemShopCustomDesignPurchaseResponseDataSchema: {
+      /**
+       * Code
+       * @description Purchased custom design code.
+       */
+      code: string;
+      /**
+       * Name
+       * @description Purchased custom design name.
+       */
+      name: string;
+      /**
+       * Gems
+       * @description Remaining gem balance.
+       */
+      gems: number;
+      /**
+       * Cost
+       * @description Gem cost of the purchase.
+       */
+      cost: number;
+    };
+    /** GemShopCustomDesignPurchaseResponseSchema */
+    GemShopCustomDesignPurchaseResponseSchema: {
+      data: components['schemas']['GemShopCustomDesignPurchaseResponseDataSchema'];
+    };
+    /** GemShopSkinCatalogItemSchema */
+    GemShopSkinCatalogItemSchema: {
+      /**
+       * Code
+       * @description Skin code.
+       */
+      code: string;
+      /**
+       * Name
+       * @description Skin name.
+       */
+      name: string;
+      /**
+       * Description
+       * @description Skin description.
+       */
+      description: string;
+      /**
+       * Price
+       * @description Skin price in gems.
+       */
+      price: number;
+    };
+    /** GemShopSpawnEventCatalogItemSchema */
+    GemShopSpawnEventCatalogItemSchema: {
+      /**
+       * Code
+       * @description Event code.
+       */
+      code: string;
+      /**
+       * Name
+       * @description Event name.
+       */
+      name: string;
+      /** @description Spawned content type. */
+      content_type: components['schemas']['MapContentType'];
+      /**
+       * Content Code
+       * @description Spawned content code.
+       */
+      content_code: string;
+      /**
+       * Duration
+       * @description Event duration in minutes.
+       */
+      duration: number;
+      /**
+       * Price
+       * @description Spawn cost in gems.
+       */
+      price: number;
+    };
+    /** GemShopSubscriptionCatalogItemSchema */
+    GemShopSubscriptionCatalogItemSchema: {
+      /**
+       * Code
+       * @description Subscription offer code.
+       */
+      code: string;
+      /**
+       * Name
+       * @description Subscription offer name.
+       */
+      name: string;
+      /**
+       * Duration Days
+       * @description Subscription duration in days.
+       */
+      duration_days: number;
+      /**
+       * Price
+       * @description Subscription price in gems.
+       */
+      price: number;
+    };
+    /** GemShopSubscriptionResponseDataSchema */
+    GemShopSubscriptionResponseDataSchema: {
+      /**
+       * Member
+       * @description Whether the account is now a member.
+       */
+      member: boolean;
+      /**
+       * Member Expiration
+       * Format: date-time
+       * @description Membership expiration date.
+       */
+      member_expiration: string;
+      /**
+       * Gems
+       * @description Remaining gem balance.
+       */
+      gems: number;
+      /**
+       * Cost
+       * @description Gem cost of the purchase.
+       */
+      cost: number;
+    };
+    /** GemShopSubscriptionResponseSchema */
+    GemShopSubscriptionResponseSchema: {
+      data: components['schemas']['GemShopSubscriptionResponseDataSchema'];
+    };
+    /** GemTransactionListResponseSchema */
+    GemTransactionListResponseSchema: {
+      /** Data */
+      data: components['schemas']['GemTransactionSchema'][];
+    };
+    /** GemTransactionSchema */
+    GemTransactionSchema: {
+      /**
+       * Type
+       * @description Gem transaction type.
+       */
+      type: string;
+      /**
+       * Gems
+       * @description Signed gem delta.
+       */
+      gems: number;
+      /**
+       * Description
+       * @description Human-readable transaction description.
+       */
+      description: string;
+      /**
+       * Metadata
+       * @description Additional transaction metadata.
+       */
+      metadata: {
+        [key: string]: unknown;
+      };
+      /**
+       * Created At
+       * Format: date-time
+       * @description Transaction creation date.
+       */
+      created_at: string;
     };
     /** GiveGoldDataSchema */
     GiveGoldDataSchema: {
@@ -3931,8 +4847,8 @@ export interface components {
       /** @description Transition to another map. */
       transition?: components['schemas']['TransitionSchema'];
     };
-    /** InventorySlot */
-    InventorySlot: {
+    /** InventorySlotSchema */
+    InventorySlotSchema: {
       /**
        * Slot
        * @description Inventory slot identifier.
@@ -4002,6 +4918,12 @@ export interface components {
        * @description Item tradeable status. A non-tradeable item cannot be exchanged or sold.
        */
       tradeable: boolean;
+      /**
+       * Recyclable
+       * @description Item recyclable status. A recyclable item can be recycled at the matching workshop.
+       * @default false
+       */
+      recyclable: boolean;
     };
     /**
      * ItemSlot
@@ -4092,13 +5014,17 @@ export interface components {
      */
     LogType:
       | 'spawn'
+      | 'delete_character'
       | 'movement'
       | 'fight'
+      | 'raid_fight'
       | 'multi_fight'
       | 'crafting'
       | 'gathering'
       | 'buy_ge'
       | 'sell_ge'
+      | 'create_buy_order_ge'
+      | 'fill_buy_order_ge'
       | 'buy_npc'
       | 'sell_npc'
       | 'cancel_ge'
@@ -4123,14 +5049,22 @@ export interface components {
       | 'give_gold'
       | 'receive_item'
       | 'receive_gold'
+      | 'raid_deposit'
       | 'change_skin'
       | 'rename'
-      | 'transition';
+      | 'transition'
+      | 'claim_item'
+      | 'sandbox_give_gold'
+      | 'sandbox_give_item'
+      | 'sandbox_give_xp'
+      | 'sandbox_reset_account'
+      | 'sandbox_clear_cooldown'
+      | 'sandbox_teleport';
     /**
      * MapAccessType
      * @enum {string}
      */
-    MapAccessType: 'standard' | 'teleportation' | 'conditional' | 'blocked';
+    MapAccessType: 'standard' | 'restricted' | 'conditional' | 'blocked';
     /** MapContentSchema */
     MapContentSchema: {
       /** @description Type of the content. */
@@ -4152,7 +5086,8 @@ export interface components {
       | 'bank'
       | 'grand_exchange'
       | 'tasks_master'
-      | 'npc';
+      | 'npc'
+      | 'raid';
     /**
      * MapLayer
      * @enum {string}
@@ -4195,6 +5130,29 @@ export interface components {
       access: components['schemas']['AccessSchema'];
       /** @description Interactions available on this map. */
       interactions: components['schemas']['InteractionSchema'];
+    };
+    /** MemberTokenSubscriptionResponseDataSchema */
+    MemberTokenSubscriptionResponseDataSchema: {
+      /**
+       * Member
+       * @description Whether the account is now a member.
+       */
+      member: boolean;
+      /**
+       * Member Expiration
+       * Format: date-time
+       * @description Membership expiration date.
+       */
+      member_expiration: string;
+      /**
+       * Member Token
+       * @description Remaining member tokens. Member tokens are manually granted as rewards for events.
+       */
+      member_token: number;
+    };
+    /** MemberTokenSubscriptionResponseSchema */
+    MemberTokenSubscriptionResponseSchema: {
+      data: components['schemas']['MemberTokenSubscriptionResponseDataSchema'];
     };
     /** MonsterResponseSchema */
     MonsterResponseSchema: {
@@ -4299,7 +5257,7 @@ export interface components {
      * MonsterType
      * @enum {string}
      */
-    MonsterType: 'normal' | 'elite' | 'boss';
+    MonsterType: 'normal' | 'elite' | 'boss' | 'raid_boss';
     /** MyAccountDetails */
     MyAccountDetails: {
       /**
@@ -4321,7 +5279,7 @@ export interface components {
       /**
        * Member Expiration
        * Format: date-time
-       * @description Member expiration date.
+       * @description Membership expiration date.
        */
       member_expiration?: string | null;
       /** @description Account status. */
@@ -4342,10 +5300,11 @@ export interface components {
        */
       gems: number;
       /**
-       * Event Token
-       * @description Event tokens for spawning events.
+       * Member Token
+       * @description Member tokens manually granted as rewards for events. Each token can be redeemed for one month of membership.
+       * @default 0
        */
-      event_token: number;
+      member_token: number;
       /**
        * Achievements Points
        * @description Achievement points.
@@ -4374,11 +5333,11 @@ export interface components {
        */
       data: components['schemas']['CharacterSchema'][];
     };
-    /** NPCItem */
-    NPCItem: {
+    /** NPCItemSchema */
+    NPCItemSchema: {
       /**
        * Code
-       * @description The code of the NPC. This is the NPC's unique identifier (ID).
+       * @description The code of the item. This is the item's unique identifier (ID).
        */
       code: string;
       /**
@@ -4425,6 +5384,12 @@ export interface components {
       description: string;
       /** @description Type of the NPC. */
       type: components['schemas']['NPCType'];
+      /**
+       * Items
+       * @description Items sold/bought by the NPC.
+       * @default []
+       */
+      items: components['schemas']['SimpleNPCItemSchema'][];
     };
     /**
      * NPCType
@@ -4515,6 +5480,315 @@ export interface components {
        */
       message: string;
     };
+    /**
+     * PendingItemSchema
+     * @description Schema for pending items that can be claimed by any character.
+     */
+    PendingItemSchema: {
+      /**
+       * Id
+       * @description Pending item ID.
+       */
+      id: string;
+      /**
+       * Account
+       * @description Account username.
+       */
+      account: string;
+      /** @description Source of the pending item. */
+      source: components['schemas']['PendingItemSource'];
+      /**
+       * Source Id
+       * @description ID reference for the source (e.g., achievement code, order id).
+       */
+      source_id?: string | null;
+      /**
+       * Description
+       * @description Description for display.
+       */
+      description: string;
+      /**
+       * Gold
+       * @description Gold amount.
+       * @default 0
+       */
+      gold: number;
+      /**
+       * Items
+       * @description List of items to be claimed.
+       */
+      items?: components['schemas']['SimpleItemSchema'][];
+      /**
+       * Created At
+       * Format: date-time
+       * @description When the pending item was created.
+       */
+      created_at: string;
+      /**
+       * Claimed At
+       * Format: date-time
+       * @description When the pending item was claimed.
+       */
+      claimed_at?: string | null;
+    };
+    /**
+     * PendingItemSource
+     * @description Source types for pending items.
+     * @enum {string}
+     */
+    PendingItemSource: 'achievement' | 'grand_exchange' | 'admin' | 'event' | 'raid' | 'other';
+    /** PurchaseGemsRequestSchema */
+    PurchaseGemsRequestSchema: {
+      /**
+       * Quantity
+       * @description Number of gems to purchase.
+       * @enum {integer}
+       */
+      quantity: 500 | 1100 | 2400 | 6125 | 12500;
+    };
+    /** PurchaseHistoryListResponseSchema */
+    PurchaseHistoryListResponseSchema: {
+      /** Data */
+      data: components['schemas']['PurchaseHistorySchema'][];
+    };
+    /** PurchaseHistorySchema */
+    PurchaseHistorySchema: {
+      /** @description Type of purchase. */
+      type: components['schemas']['PurchaseType'];
+      /**
+       * Description
+       * @description Description of the purchase.
+       */
+      description: string;
+      /**
+       * Amount
+       * @description Amount in cents.
+       */
+      amount: number;
+      /**
+       * Gems Credited
+       * @description Gems credited from this purchase.
+       * @default 0
+       */
+      gems_credited: number;
+      /**
+       * Created At
+       * Format: date-time
+       * @description When the purchase was made.
+       */
+      created_at: string;
+    };
+    /**
+     * PurchaseType
+     * @description Type of purchase in history.
+     * @enum {string}
+     */
+    PurchaseType: 'subscription' | 'gem_pack';
+    /** RaidDamageRewardSchema */
+    RaidDamageRewardSchema: {
+      /**
+       * Damage Per Reward
+       * @description Damage required per reward instance.
+       */
+      damage_per_reward: number;
+      /**
+       * Max Rewards
+       * @description Maximum number of times this reward can be granted. Null means no cap.
+       */
+      max_rewards?: number | null;
+      /**
+       * Items
+       * @description Items granted per reward instance.
+       */
+      items?: components['schemas']['SimpleItemSchema'][];
+    };
+    /**
+     * RaidInstanceResult
+     * @enum {string}
+     */
+    RaidInstanceResult: 'success' | 'failure';
+    /** RaidInstanceSchema */
+    RaidInstanceSchema: {
+      /**
+       * Starts At
+       * Format: date-time
+       * @description Weekly raid opening datetime in UTC.
+       */
+      starts_at: string;
+      /**
+       * Ends At
+       * Format: date-time
+       * @description Weekly raid planned closing datetime in UTC.
+       */
+      ends_at: string;
+      /** @description Current status of this weekly raid instance. */
+      status: components['schemas']['RaidStatus'];
+      /**
+       * Total Hp
+       * @description Shared HP pool when this raid instance starts.
+       */
+      total_hp: number;
+      /**
+       * Remaining Hp
+       * @description Remaining shared HP pool for this raid instance.
+       */
+      remaining_hp: number;
+      /**
+       * Participant Count
+       * @description Number of accounts that contributed during this raid instance.
+       * @default 0
+       */
+      participant_count: number;
+      /**
+       * Ended At
+       * Format: date-time
+       * @description Datetime when this raid instance actually ended.
+       */
+      ended_at?: string | null;
+      /** @description Final result for this raid instance. */
+      result?: components['schemas']['RaidInstanceResult'];
+      /**
+       * Rewards Distributed At
+       * Format: date-time
+       * @description Datetime when rewards were distributed for this raid instance.
+       */
+      rewards_distributed_at?: string | null;
+    };
+    /** RaidLeaderboardEntrySchema */
+    RaidLeaderboardEntrySchema: {
+      /**
+       * Position
+       * @description Leaderboard position.
+       */
+      position: number;
+      /**
+       * Account
+       * @description Account name.
+       */
+      account: string;
+      /**
+       * Points
+       * @description Points earned for this raid instance.
+       */
+      points: number;
+    };
+    /** RaidRankRewardSchema */
+    RaidRankRewardSchema: {
+      /**
+       * Min Rank
+       * @description Inclusive minimum rank.
+       */
+      min_rank: number;
+      /**
+       * Max Rank
+       * @description Inclusive maximum rank.
+       */
+      max_rank: number;
+      /**
+       * Items
+       * @description Items granted for this rank bracket.
+       */
+      items?: components['schemas']['SimpleItemSchema'][];
+    };
+    /** RaidResponseSchema */
+    RaidResponseSchema: {
+      /** @description Raid details. */
+      data: components['schemas']['RaidSchema'];
+    };
+    /** RaidRewardsSchema */
+    RaidRewardsSchema: {
+      /**
+       * Damage Rewards
+       * @description Items granted based on cumulative damage dealt.
+       */
+      damage_rewards?: components['schemas']['RaidDamageRewardSchema'][];
+      /**
+       * Leaderboard
+       * @description Items granted based on leaderboard rank.
+       */
+      leaderboard?: components['schemas']['RaidRankRewardSchema'][];
+    };
+    /** RaidScheduleSchema */
+    RaidScheduleSchema: {
+      /**
+       * Weekdays
+       * @description UTC weekdays when the raid opens.
+       */
+      weekdays: components['schemas']['RaidWeekday'][];
+      /**
+       * Start Hour Utc
+       * @description UTC hour when the raid opens.
+       * @default 0
+       */
+      start_hour_utc: number;
+      /**
+       * Start Minute Utc
+       * @description UTC minute when the raid opens.
+       * @default 0
+       */
+      start_minute_utc: number;
+      /**
+       * Duration Hours
+       * @description Maximum raid duration in hours.
+       * @default 24
+       */
+      duration_hours: number;
+    };
+    /** RaidSchema */
+    RaidSchema: {
+      /**
+       * Code
+       * @description Raid code.
+       */
+      code: string;
+      /**
+       * Name
+       * @description Raid name.
+       */
+      name: string;
+      /**
+       * Description
+       * @description Raid description.
+       */
+      description?: string | null;
+      /**
+       * Monster
+       * @description Monster code used for raid combat simulation.
+       */
+      monster: string;
+      /** @description Weekly raid opening schedule. */
+      schedule: components['schemas']['RaidScheduleSchema'];
+      /** @description Reward rules for the raid. */
+      rewards?: components['schemas']['RaidRewardsSchema'];
+      /** @description Current overall raid status. */
+      status: components['schemas']['RaidStatus'];
+      /**
+       * Next Start At
+       * Format: date-time
+       * @description Datetime for the next scheduled raid opening in UTC.
+       */
+      next_start_at: string;
+      /**
+       * Participant Count
+       * @description Number of distinct accounts that contributed to the active or latest raid instance.
+       * @default 0
+       */
+      participant_count: number;
+      /** @description Currently active weekly raid instance, if any. */
+      active_instance?: components['schemas']['RaidInstanceSchema'];
+      /** @description Latest weekly raid instance, active or finished. */
+      latest_instance?: components['schemas']['RaidInstanceSchema'];
+    };
+    /**
+     * RaidStatus
+     * @enum {string}
+     */
+    RaidStatus: 'upcoming' | 'active' | 'finished_success' | 'finished_failure';
+    /**
+     * RaidWeekday
+     * @enum {string}
+     */
+    RaidWeekday: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
     /** RateLimitSchema */
     RateLimitSchema: {
       /**
@@ -4527,6 +5801,49 @@ export interface components {
        * @description Value of the rate limit.
        */
       value: string;
+    };
+    /** RateLimitScopeSchema */
+    RateLimitScopeSchema: {
+      second?: components['schemas']['RateLimitWindowSchema'];
+      minute?: components['schemas']['RateLimitWindowSchema'];
+      hour?: components['schemas']['RateLimitWindowSchema'];
+      day?: components['schemas']['RateLimitWindowSchema'];
+    };
+    /** RateLimitWindowSchema */
+    RateLimitWindowSchema: {
+      /**
+       * Limit
+       * @description Maximum requests allowed in this window.
+       */
+      limit: number;
+      /**
+       * Remaining
+       * @description Remaining requests in the current window.
+       */
+      remaining: number;
+      /**
+       * Reset
+       * Format: date-time
+       * @description UTC datetime when the window resets.
+       */
+      reset: string;
+    };
+    /** RateLimitsDataSchema */
+    RateLimitsDataSchema: {
+      /** @description Rate limits for account endpoints. */
+      account: components['schemas']['RateLimitScopeSchema'];
+      /** @description Rate limits for data endpoints. */
+      data: components['schemas']['RateLimitScopeSchema'];
+      /** @description Rate limits for action endpoints. */
+      action: components['schemas']['RateLimitScopeSchema'];
+      /** @description Rate limit for the fight simulation endpoint. Only available for members. */
+      simulation: components['schemas']['RateLimitScopeSchema'];
+      /** @description Assistant daily usage. Only available for members. */
+      assistant?: components['schemas']['RateLimitScopeSchema'];
+    };
+    /** RateLimitsSchema */
+    RateLimitsSchema: {
+      data: components['schemas']['RateLimitsDataSchema'];
     };
     /** RecyclingDataSchema */
     RecyclingDataSchema: {
@@ -4544,6 +5861,18 @@ export interface components {
        * @description Objects received.
        */
       items: components['schemas']['DropSchema'][];
+      /**
+       * Enhanced
+       * @description Whether enhanced recycling was used.
+       * @default false
+       */
+      enhanced: boolean;
+      /**
+       * Gold
+       * @description Gold spent for enhanced recycling.
+       * @default 0
+       */
+      gold: number;
     };
     /** RecyclingResponseSchema */
     RecyclingResponseSchema: {
@@ -4562,6 +5891,41 @@ export interface components {
        * @default 1
        */
       quantity: number;
+      /**
+       * Enhanced
+       * @description Whether to use enhanced recycling.
+       * @default false
+       */
+      enhanced: boolean;
+    };
+    /** RenameCharacterDataSchema */
+    RenameCharacterDataSchema: {
+      /** @description Cooldown details. */
+      cooldown: components['schemas']['CooldownSchema'];
+      /**
+       * Old Name
+       * @description Previous character name.
+       */
+      old_name: string;
+      /**
+       * New Name
+       * @description New character name.
+       */
+      new_name: string;
+      /** @description Player details. */
+      character: components['schemas']['CharacterSchema'];
+    };
+    /** RenameCharacterSchema */
+    RenameCharacterSchema: {
+      /**
+       * Name
+       * @description Your desired character name. It's unique and all players can see it.
+       */
+      name: string;
+    };
+    /** RenameResponseSchema */
+    RenameResponseSchema: {
+      data: components['schemas']['RenameCharacterDataSchema'];
     };
     /** ResourceResponseSchema */
     ResourceResponseSchema: {
@@ -4613,10 +5977,32 @@ export interface components {
       /** @description Player details. */
       character: components['schemas']['CharacterSchema'];
     };
+    /**
+     * RewardItemSchema
+     * @description Schema for a single item reward.
+     */
+    RewardItemSchema: {
+      /**
+       * Code
+       * @description Item code.
+       */
+      code: string;
+      /**
+       * Quantity
+       * @description Item quantity.
+       */
+      quantity: number;
+    };
     /** RewardResponseSchema */
     RewardResponseSchema: {
       data: components['schemas']['DropRateSchema'];
     };
+    /**
+     * RewardType
+     * @description Type of season reward.
+     * @enum {string}
+     */
+    RewardType: 'badge' | 'skin' | 'gold' | 'item';
     /** RewardsSchema */
     RewardsSchema: {
       /**
@@ -4630,23 +6016,43 @@ export interface components {
        */
       gold: number;
     };
-    /** SeasonBadgeSchema */
-    SeasonBadgeSchema: {
+    /** SeasonRewardSchema */
+    SeasonRewardSchema: {
       /**
        * Code
-       * @description Badge code.
+       * @description Code of the item/badge/skin associated with this reward.
        */
       code: string;
+      /** @description Type of the reward. */
+      type: components['schemas']['RewardType'];
       /**
        * Description
-       * @description Badge description.
+       * @description Description of how to earn this reward.
        */
       description: string;
       /**
        * Required Points
-       * @description Required achievement points to earn the badge.
+       * @description Number of achievement points required to earn this reward.
        */
       required_points: number;
+      /**
+       * Quantity
+       * @description Quantity of the reward (e.g., gold amount, item quantity).
+       * @default 1
+       */
+      quantity: number;
+      /**
+       * Member Required
+       * @description Whether member status is required to earn this reward.
+       * @default false
+       */
+      member_required: boolean;
+      /**
+       * First Only
+       * @description Whether this reward is only for the first player to reach the required points.
+       * @default false
+       */
+      first_only: boolean;
     };
     /** SeasonSchema */
     SeasonSchema: {
@@ -4667,33 +6073,10 @@ export interface components {
        */
       start_date?: string;
       /**
-       * Badges
-       * @description Season badges with required achievement points.
+       * Rewards
+       * @description Season rewards with required achievement points, sorted by points ascending.
        */
-      badges: components['schemas']['SeasonBadgeSchema'][];
-      /**
-       * Skins
-       * @description Season skins with required achievement points.
-       */
-      skins: components['schemas']['SeasonSkinSchema'][];
-    };
-    /** SeasonSkinSchema */
-    SeasonSkinSchema: {
-      /**
-       * Code
-       * @description Skin code.
-       */
-      code: string;
-      /**
-       * Description
-       * @description Skin description.
-       */
-      description: string;
-      /**
-       * Required Points
-       * @description Required achievement points to earn the skin.
-       */
-      required_points: number;
+      rewards: components['schemas']['StatusSeasonRewardSchema'][];
     };
     /** SimpleEffectSchema */
     SimpleEffectSchema: {
@@ -4725,6 +6108,29 @@ export interface components {
        * @description Item quantity.
        */
       quantity: number;
+    };
+    /** SimpleNPCItemSchema */
+    SimpleNPCItemSchema: {
+      /**
+       * Code
+       * @description Item code.
+       */
+      code: string;
+      /**
+       * Currency
+       * @description Currency used to buy/sell the item. If it's not gold, it's the item code.
+       */
+      currency: string;
+      /**
+       * Buy Price
+       * @description Price to buy the item.
+       */
+      buy_price?: number | null;
+      /**
+       * Sell Price
+       * @description Price to sell the item.
+       */
+      sell_price?: number | null;
     };
     /**
      * Skill
@@ -4765,16 +6171,253 @@ export interface components {
     SkillResponseSchema: {
       data: components['schemas']['SkillDataSchema'];
     };
-    /**
-     * SpawnEventRequest
-     * @description Model for the request to spawn a specific event
-     */
-    SpawnEventRequest: {
+    /** SkinResponseSchema */
+    SkinResponseSchema: {
+      data: components['schemas']['SkinSchema'];
+    };
+    /** SkinSchema */
+    SkinSchema: {
+      /**
+       * Code
+       * @description The code of the skin. This is the skin's unique identifier.
+       */
+      code: string;
+      /**
+       * Name
+       * @description Display name of the skin.
+       */
+      name: string;
+      /**
+       * Description
+       * @description Description of the skin and how to obtain it.
+       */
+      description: string;
+      /**
+       * Default
+       * @description Whether this skin is available to all players by default.
+       */
+      default: boolean;
+      /**
+       * Price
+       * @description Price in gems to purchase this skin. Null if not purchasable.
+       */
+      price?: number | null;
+    };
+    /** SpawnEventRequestSchema */
+    SpawnEventRequestSchema: {
       /**
        * Code
        * @description Code of the event to spawn
        */
       code: string;
+    };
+    /** StaticDataPage[AchievementSchema] */
+    StaticDataPage_AchievementSchema_: {
+      /** Data */
+      data: components['schemas']['AchievementSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[ActiveEventSchema] */
+    StaticDataPage_ActiveEventSchema_: {
+      /** Data */
+      data: components['schemas']['ActiveEventSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[BadgeSchema] */
+    StaticDataPage_BadgeSchema_: {
+      /** Data */
+      data: components['schemas']['BadgeSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[DropRateSchema] */
+    StaticDataPage_DropRateSchema_: {
+      /** Data */
+      data: components['schemas']['DropRateSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[EffectSchema] */
+    StaticDataPage_EffectSchema_: {
+      /** Data */
+      data: components['schemas']['EffectSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[EventSchema] */
+    StaticDataPage_EventSchema_: {
+      /** Data */
+      data: components['schemas']['EventSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[ItemSchema] */
+    StaticDataPage_ItemSchema_: {
+      /** Data */
+      data: components['schemas']['ItemSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[MapSchema] */
+    StaticDataPage_MapSchema_: {
+      /** Data */
+      data: components['schemas']['MapSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[MonsterSchema] */
+    StaticDataPage_MonsterSchema_: {
+      /** Data */
+      data: components['schemas']['MonsterSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[NPCItemSchema] */
+    StaticDataPage_NPCItemSchema_: {
+      /** Data */
+      data: components['schemas']['NPCItemSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[NPCSchema] */
+    StaticDataPage_NPCSchema_: {
+      /** Data */
+      data: components['schemas']['NPCSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[RaidSchema] */
+    StaticDataPage_RaidSchema_: {
+      /** Data */
+      data: components['schemas']['RaidSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[ResourceSchema] */
+    StaticDataPage_ResourceSchema_: {
+      /** Data */
+      data: components['schemas']['ResourceSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[SeasonRewardSchema] */
+    StaticDataPage_SeasonRewardSchema_: {
+      /** Data */
+      data: components['schemas']['SeasonRewardSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[SkinSchema] */
+    StaticDataPage_SkinSchema_: {
+      /** Data */
+      data: components['schemas']['SkinSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
+    };
+    /** StaticDataPage[TaskFullSchema] */
+    StaticDataPage_TaskFullSchema_: {
+      /** Data */
+      data: components['schemas']['TaskFullSchema'][];
+      /** Total */
+      total: number;
+      /** Page */
+      page: number;
+      /** Size */
+      size: number;
+      /** Pages */
+      pages: number;
     };
     /** StatusResponseSchema */
     StatusResponseSchema: {
@@ -4816,6 +6459,47 @@ export interface components {
        */
       rate_limits: components['schemas']['RateLimitSchema'][];
     };
+    /**
+     * StatusSeasonRewardSchema
+     * @description Season reward as shown in server details (without season number since it's implied).
+     */
+    StatusSeasonRewardSchema: {
+      /**
+       * Code
+       * @description Unique code identifying this reward.
+       */
+      code: string;
+      /** @description Type of the reward. */
+      type: components['schemas']['RewardType'];
+      /**
+       * Description
+       * @description Description of how to earn this reward.
+       */
+      description: string;
+      /**
+       * Required Points
+       * @description Number of achievement points required to earn this reward.
+       */
+      required_points: number;
+      /**
+       * Quantity
+       * @description Quantity of the reward (e.g., gold amount, item quantity).
+       * @default 1
+       */
+      quantity: number;
+      /**
+       * Member Required
+       * @description Whether member status is required to earn this reward.
+       * @default false
+       */
+      member_required: boolean;
+      /**
+       * First Only
+       * @description Whether this reward is only for the first player to reach the required points.
+       * @default false
+       */
+      first_only: boolean;
+    };
     /** StorageEffectSchema */
     StorageEffectSchema: {
       /**
@@ -4828,6 +6512,73 @@ export interface components {
        * @description Effect value.
        */
       value: number;
+    };
+    /**
+     * StripeSubscriptionPlan
+     * @description Stripe subscription plan type.
+     * @enum {string}
+     */
+    StripeSubscriptionPlan: 'monthly' | 'annual';
+    /** SubscribeRequestSchema */
+    SubscribeRequestSchema: {
+      /** @description Stripe membership plan to purchase. */
+      plan: components['schemas']['StripeSubscriptionPlan'];
+      /**
+       * Recurring
+       * @description Whether to create a recurring Stripe subscription. Set to false to buy membership time once.
+       * @default true
+       */
+      recurring: boolean;
+    };
+    /**
+     * SubscriptionPlan
+     * @description Subscription plan type.
+     * @enum {string}
+     */
+    SubscriptionPlan: 'monthly' | 'annual' | 'prepaid';
+    /** SubscriptionResponseSchema */
+    SubscriptionResponseSchema: {
+      data: components['schemas']['SubscriptionSchema'];
+    };
+    /** SubscriptionSchema */
+    SubscriptionSchema: {
+      /** @description Subscription plan (monthly, annual, or prepaid). */
+      plan: components['schemas']['SubscriptionPlan'];
+      /**
+       * Purchase Source
+       * @description How the subscription was purchased. Mixed means both gems and member tokens were used.
+       * @enum {string}
+       */
+      purchase_source: 'stripe' | 'gems' | 'member_token' | 'mixed';
+      /**
+       * Status
+       * @description Subscription status (active, cancelled, past_due, expired).
+       */
+      status: string;
+      /**
+       * Current Period Start
+       * Format: date-time
+       * @description Start of the current billing period.
+       */
+      current_period_start: string;
+      /**
+       * Current Period End
+       * Format: date-time
+       * @description End of the current billing period.
+       */
+      current_period_end: string;
+      /**
+       * Created At
+       * Format: date-time
+       * @description When the subscription was created.
+       */
+      created_at: string;
+      /**
+       * Cancelled At
+       * Format: date-time
+       * @description When the subscription was cancelled.
+       */
+      cancelled_at?: string | null;
     };
     /** TaskCancelledResponseSchema */
     TaskCancelledResponseSchema: {
@@ -5005,6 +6756,10 @@ export interface components {
       msg: string;
       /** Error Type */
       type: string;
+      /** Input */
+      input?: unknown;
+      /** Context */
+      ctx?: Record<string, never>;
     };
     ErrorSchema: {
       /** @description Error code */
@@ -5057,7 +6812,7 @@ export interface operations {
     };
     requestBody?: never;
     responses: {
-      /** @description Successfully fetched bank details. */
+      /** @description Successfully fetched data. */
       200: {
         headers: {
           [name: string]: unknown;
@@ -5095,11 +6850,13 @@ export interface operations {
       };
     };
   };
-  get_ge_sell_orders_my_grandexchange_orders_get: {
+  get_ge_orders_my_grandexchange_orders_get: {
     parameters: {
       query?: {
         /** @description The code of the item. */
         code?: string;
+        /** @description Filter by order type (sell or buy). */
+        type?: components['schemas']['GEOrderType'];
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -5122,7 +6879,7 @@ export interface operations {
       };
     };
   };
-  get_ge_sell_history_my_grandexchange_history_get: {
+  get_ge_history_my_grandexchange_history_get: {
     parameters: {
       query?: {
         /** @description Order ID to search in your history. */
@@ -5146,7 +6903,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_GeOrderHistorySchema_'];
+          'application/json': components['schemas']['DataPage_GEOrderHistorySchema_'];
         };
       };
     };
@@ -5171,6 +6928,51 @@ export interface operations {
       };
     };
   };
+  get_pending_items_my_pending_items_get: {
+    parameters: {
+      query?: {
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched pending items. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DataPage_PendingItemSchema_'];
+        };
+      };
+    };
+  };
+  get_rate_limits_my_rates_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched rate limits. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['RateLimitsSchema'];
+        };
+      };
+    };
+  };
   change_password_my_change_password_post: {
     parameters: {
       query?: never;
@@ -5180,7 +6982,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['ChangePassword'];
+        'application/json': components['schemas']['ChangePasswordSchema'];
       };
     };
     responses: {
@@ -5243,6 +7045,441 @@ export interface operations {
            *       "error": {
            *         "code": 459,
            *         "message": "The current password you entered is invalid."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  change_email_my_change_email_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ChangeEmailSchema'];
+      };
+    };
+    responses: {
+      /** @description Email changed successfully. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This email is already in use. */
+      457: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 457,
+           *         "message": "This email is already in use."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Please use a different email. */
+      463: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 463,
+           *         "message": "Please use a different email."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  get_my_subscription_my_subscription_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['SubscriptionResponseSchema'];
+        };
+      };
+      /** @description Subscription not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Subscription not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  buy_subscription_my_subscribe_stripe_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['SubscribeRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CheckoutResponseWrapperSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description You already have an active subscription. */
+      565: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 565,
+           *         "message": "You already have an active subscription."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An active Stripe subscription cannot be extended with gems or member tokens. */
+      573: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 573,
+           *         "message": "An active Stripe subscription cannot be extended with gems or member tokens."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  subscribe_with_member_token_my_subscribe_member_token_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['MemberTokenSubscriptionResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Insufficient member tokens. */
+      572: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 572,
+           *         "message": "Insufficient member tokens."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An active Stripe subscription cannot be extended with gems or member tokens. */
+      573: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 573,
+           *         "message": "An active Stripe subscription cannot be extended with gems or member tokens."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  cancel_subscription_my_subscribe_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ResponseSchema'];
+        };
+      };
+      /** @description Subscription not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Subscription not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  get_my_purchase_history_my_purchase_history_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PurchaseHistoryListResponseSchema'];
+        };
+      };
+    };
+  };
+  get_my_gems_history_my_gems_history_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GemTransactionListResponseSchema'];
+        };
+      };
+    };
+  };
+  buy_gems_my_buy_gems_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['PurchaseGemsRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CheckoutResponseWrapperSchema'];
+        };
+      };
+      /** @description Gem pack not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Gem pack not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
            *       }
            *     }
            */
@@ -5708,7 +7945,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['EquipSchema'];
+        'application/json': components['schemas']['EquipSchema'][];
       };
     };
     responses: {
@@ -5944,7 +8181,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['UnequipSchema'];
+        'application/json': components['schemas']['UnequipSchema'][];
       };
     };
     responses: {
@@ -6394,6 +8631,23 @@ export interface operations {
            *       "error": {
            *         "code": 499,
            *         "message": "The character is in cooldown."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This raid phase is not currently active. */
+      567: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 567,
+           *         "message": "This raid phase is not currently active."
            *       }
            *     }
            */
@@ -7819,8 +10073,8 @@ export interface operations {
           'application/json': components['schemas']['ErrorResponseSchema'];
         };
       };
-      /** @description This item cannot be sold. */
-      442: {
+      /** @description This item is not available to be sold. */
+      441: {
         headers: {
           [name: string]: unknown;
         };
@@ -7828,8 +10082,8 @@ export interface operations {
           /**
            * @example {
            *       "error": {
-           *         "code": 442,
-           *         "message": "This item cannot be sold."
+           *         "code": 441,
+           *         "message": "This item is not available to be sold."
            *       }
            *     }
            */
@@ -8049,6 +10303,23 @@ export interface operations {
            *       "error": {
            *         "code": 486,
            *         "message": "An action is already in progress for this character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character does not have enough gold. */
+      492: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 492,
+           *         "message": "The character does not have enough gold."
            *       }
            *     }
            */
@@ -8361,7 +10632,7 @@ export interface operations {
       };
     };
   };
-  action_ge_create_sell_order_my__name__action_grandexchange_sell_post: {
+  action_ge_create_sell_order_my__name__action_grandexchange_create_sell_order_post: {
     parameters: {
       query?: never;
       header?: never;
@@ -8373,7 +10644,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['GEOrderCreationrSchema'];
+        'application/json': components['schemas']['GEOrderCreationSchema'];
       };
     };
     responses: {
@@ -8493,23 +10764,6 @@ export interface operations {
           'application/json': components['schemas']['ErrorResponseSchema'];
         };
       };
-      /** @description The character does not have enough gold. */
-      492: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          /**
-           * @example {
-           *       "error": {
-           *         "code": 492,
-           *         "message": "The character does not have enough gold."
-           *       }
-           *     }
-           */
-          'application/json': components['schemas']['ErrorResponseSchema'];
-        };
-      };
       /** @description Character not found. */
       498: {
         headers: {
@@ -8563,7 +10817,7 @@ export interface operations {
       };
     };
   };
-  action_ge_cancel_sell_order_my__name__action_grandexchange_cancel_post: {
+  action_ge_cancel_order_my__name__action_grandexchange_cancel_post: {
     parameters: {
       query?: never;
       header?: never;
@@ -8579,7 +10833,7 @@ export interface operations {
       };
     };
     responses: {
-      /** @description Your sell order has been successfully cancelled. */
+      /** @description Your order has been successfully cancelled. */
       200: {
         headers: {
           [name: string]: unknown;
@@ -8689,6 +10943,393 @@ export interface operations {
            *       "error": {
            *         "code": 497,
            *         "message": "The character's inventory is full."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 498,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character is in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 499,
+           *         "message": "The character is in cooldown."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Grand Exchange not found on this map. */
+      598: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 598,
+           *         "message": "Grand Exchange not found on this map."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  action_ge_create_buy_order_my__name__action_grandexchange_create_buy_order_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['GEBuyOrderCreationSchema'];
+      };
+    };
+    responses: {
+      /** @description The buy order has been successfully created. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GECreateOrderTransactionResponseSchema'];
+        };
+      };
+      /** @description Item not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Item not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description You cannot create more than 100 orders at the same time. */
+      433: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 433,
+           *         "message": "You cannot create more than 100 orders at the same time."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This item cannot be sold. */
+      437: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 437,
+           *         "message": "This item cannot be sold."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress for this character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "An action is already in progress for this character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character does not have enough gold. */
+      492: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 492,
+           *         "message": "The character does not have enough gold."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 498,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character is in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 499,
+           *         "message": "The character is in cooldown."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Grand Exchange not found on this map. */
+      598: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 598,
+           *         "message": "Grand Exchange not found on this map."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  action_ge_fill_my__name__action_grandexchange_fill_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['GEFillBuyOrderSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully sold items to the buy order. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GETransactionResponseSchema'];
+        };
+      };
+      /** @description Buy order not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Buy order not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This offer does not contain that many items. */
+      434: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 434,
+           *         "message": "This offer does not contain that many items."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description You cannot trade with yourself. */
+      435: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 435,
+           *         "message": "You cannot trade with yourself."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description A transaction is already in progress for this order by another character. */
+      436: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 436,
+           *         "message": "A transaction is already in progress for this order by another character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Missing required item(s). */
+      478: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 478,
+           *         "message": "Missing required item(s)."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress for this character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "An action is already in progress for this character."
            *       }
            *     }
            */
@@ -9434,6 +12075,23 @@ export interface operations {
           'application/json': components['schemas']['ErrorResponseSchema'];
         };
       };
+      /** @description The character has no task assigned. */
+      487: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 487,
+           *         "message": "The character has no task assigned."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
       /** @description Character not found. */
       498: {
         headers: {
@@ -9755,6 +12413,138 @@ export interface operations {
       };
     };
   };
+  action_claim_pending_item_my__name__action_claim_item__id__post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Name of your character. */
+        name: string;
+        /** @description The ID of the pending item to claim. */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully claimed the pending item. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ClaimPendingItemResponseSchema'];
+        };
+      };
+      /** @description Pending item not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Pending item not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress for this character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "An action is already in progress for this character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character's inventory is full. */
+      497: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 497,
+           *         "message": "The character's inventory is full."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      498: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 498,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character is in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 499,
+           *         "message": "The character is in cooldown."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
   action_delete_item_my__name__action_delete_post: {
     parameters: {
       query?: never;
@@ -9897,6 +12687,23 @@ export interface operations {
           'application/json': components['schemas']['ChangeSkinResponseSchema'];
         };
       };
+      /** @description Skin not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Skin not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
       /** @description Request could not be processed due to an invalid payload. */
       422: {
         headers: {
@@ -9964,6 +12771,140 @@ export interface operations {
            *       "error": {
            *         "code": 550,
            *         "message": "You cannot choose this skin because you do not own it."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  action_rename_my__name__action_rename_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description Current name of your character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['RenameCharacterSchema'];
+      };
+    };
+    responses: {
+      /** @description Character successfully renamed. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['RenameResponseSchema'];
+        };
+      };
+      /** @description Character not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Character not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Access denied, you must be a member to do that. */
+      451: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 451,
+           *         "message": "Access denied, you must be a member to do that."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An action is already in progress for this character. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "An action is already in progress for this character."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This name is already in use. */
+      494: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 494,
+           *         "message": "This name is already in use."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description The character is in cooldown. */
+      499: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 499,
+           *         "message": "The character is in cooldown."
            *       }
            *     }
            */
@@ -10109,6 +13050,78 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['MyCharactersListSchema'];
+        };
+      };
+    };
+  };
+  get_account_achievements_accounts__account__achievements_get: {
+    parameters: {
+      query?: {
+        /** @description Type of achievements. */
+        type?: components['schemas']['AchievementType'];
+        /** @description Filter by completed achievements. */
+        completed?: boolean;
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path: {
+        /** @description The name of the account. */
+        account: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched achievements. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DataPage_AccountAchievementSchema_'];
+        };
+      };
+      /** @description Account not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Account not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  get_account_characters_accounts__account__characters_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The name of the account. */
+        account: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched account characters. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CharactersListSchema'];
         };
       };
     };
@@ -10336,78 +13349,6 @@ export interface operations {
       };
     };
   };
-  get_account_achievements_accounts__account__achievements_get: {
-    parameters: {
-      query?: {
-        /** @description Type of achievements. */
-        type?: components['schemas']['AchievementType'];
-        /** @description Filter by completed achievements. */
-        completed?: boolean;
-        /** @description Page number */
-        page?: number;
-        /** @description Page size */
-        size?: number;
-      };
-      header?: never;
-      path: {
-        /** @description The name of the account. */
-        account: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successfully fetched achievements. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['DataPage_AccountAchievementSchema_'];
-        };
-      };
-      /** @description Account not found. */
-      404: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          /**
-           * @example {
-           *       "error": {
-           *         "code": 404,
-           *         "message": "Account not found."
-           *       }
-           *     }
-           */
-          'application/json': components['schemas']['ErrorResponseSchema'];
-        };
-      };
-    };
-  };
-  get_account_characters_accounts__account__characters_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        /** @description The name of the account. */
-        account: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successfully fetched account characters. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['CharactersListSchema'];
-        };
-      };
-    };
-  };
   get_account_accounts__account__get: {
     parameters: {
       query?: never;
@@ -10470,7 +13411,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_AchievementSchema_'];
+          'application/json': components['schemas']['StaticDataPage_AchievementSchema_'];
         };
       };
     };
@@ -10535,7 +13476,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_BadgeSchema_'];
+          'application/json': components['schemas']['StaticDataPage_BadgeSchema_'];
         };
       };
     };
@@ -10580,6 +13521,126 @@ export interface operations {
       };
     };
   };
+  get_all_skins_skins_get: {
+    parameters: {
+      query?: {
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched skins. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['StaticDataPage_SkinSchema_'];
+        };
+      };
+    };
+  };
+  get_skin_skins__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The code of the skin. */
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched skin. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['SkinResponseSchema'];
+        };
+      };
+      /** @description skin not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "skin not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  get_all_season_rewards_season_rewards_get: {
+    parameters: {
+      query?: {
+        /** @description Filter by reward type. */
+        type?: components['schemas']['RewardType'];
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched season rewards. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['StaticDataPage_SeasonRewardSchema_'];
+        };
+      };
+    };
+  };
+  get_season_rewards_by_code_season_rewards__code__get: {
+    parameters: {
+      query?: {
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path: {
+        /** @description The code of the season reward. */
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched season rewards. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['StaticDataPage_SeasonRewardSchema_'];
+        };
+      };
+    };
+  };
   create_character_characters_create_post: {
     parameters: {
       query?: never;
@@ -10600,6 +13661,23 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['CharacterResponseSchema'];
+        };
+      };
+      /** @description Skin not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Skin not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
         };
       };
       /** @description Request could not be processed due to an invalid payload. */
@@ -10740,6 +13818,46 @@ export interface operations {
       };
     };
   };
+  get_character_stats_characters__name__stats_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The name of the character. */
+        name: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched character stats. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CharacterStatsResponseSchema'];
+        };
+      };
+      /** @description character stats not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "character stats not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
   get_active_characters_characters_active_get: {
     parameters: {
       query?: {
@@ -10825,7 +13943,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_EffectSchema_'];
+          'application/json': components['schemas']['StaticDataPage_EffectSchema_'];
         };
       };
     };
@@ -10890,7 +14008,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_ActiveEventSchema_'];
+          'application/json': components['schemas']['StaticDataPage_ActiveEventSchema_'];
         };
       };
     };
@@ -10917,115 +14035,16 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_EventSchema_'];
+          'application/json': components['schemas']['StaticDataPage_EventSchema_'];
         };
       };
     };
   };
-  spawn_event_events_spawn_post: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['SpawnEventRequest'];
-      };
-    };
-    responses: {
-      /** @description Successfully fetched data. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['ActiveEventResponseSchema'];
-        };
-      };
-      /** @description Request could not be processed due to an invalid payload. */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          /**
-           * @example {
-           *       "error": {
-           *         "code": 422,
-           *         "message": "Request could not be processed due to an invalid payload.",
-           *         "data": {
-           *           "field_name": [
-           *             "Field required"
-           *           ]
-           *         }
-           *       }
-           *     }
-           */
-          'application/json': components['schemas']['ErrorResponseSchema'];
-        };
-      };
-      /** @description Access denied, you must be a member to do that. */
-      451: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          /**
-           * @example {
-           *       "error": {
-           *         "code": 451,
-           *         "message": "Access denied, you must be a member to do that."
-           *       }
-           *     }
-           */
-          'application/json': components['schemas']['ErrorResponseSchema'];
-        };
-      };
-      /** @description Insufficient event tokens. You need at least 1 event token to spawn an event. */
-      563: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          /**
-           * @example {
-           *       "error": {
-           *         "code": 563,
-           *         "message": "Insufficient event tokens. You need at least 1 event token to spawn an event."
-           *       }
-           *     }
-           */
-          'application/json': components['schemas']['ErrorResponseSchema'];
-        };
-      };
-      /** @description Event not found or already active. */
-      564: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          /**
-           * @example {
-           *       "error": {
-           *         "code": 564,
-           *         "message": "Event not found or already active."
-           *       }
-           *     }
-           */
-          'application/json': components['schemas']['ErrorResponseSchema'];
-        };
-      };
-    };
-  };
-  get_ge_sell_history_grandexchange_history__code__get: {
+  get_ge_history_grandexchange_history__code__get: {
     parameters: {
       query?: {
-        /** @description The seller (account name) of the item. */
-        seller?: string;
-        /** @description The buyer (account name) of the item. */
-        buyer?: string;
+        /** @description Account involved in the transaction (matches either seller or buyer). */
+        account?: string;
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -11046,7 +14065,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_GeOrderHistorySchema_'];
+          'application/json': components['schemas']['DataPage_GEOrderHistorySchema_'];
         };
       };
       /** @description item history not found. */
@@ -11068,13 +14087,17 @@ export interface operations {
       };
     };
   };
-  get_ge_sell_orders_grandexchange_orders_get: {
+  get_ge_orders_grandexchange_orders_get: {
     parameters: {
       query?: {
         /** @description The code of the item. */
         code?: string;
-        /** @description The seller (account name) of the item. */
-        seller?: string;
+        /** @description The account that sells or buys items. */
+        account?: string;
+        /** @description Filter by order type (sell or buy). */
+        type?: components['schemas']['GEOrderType'];
+        /** @description Filter by item type. */
+        item_type?: components['schemas']['ItemType'];
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -11097,7 +14120,7 @@ export interface operations {
       };
     };
   };
-  get_ge_sell_order_grandexchange_orders__id__get: {
+  get_ge_order_grandexchange_orders__id__get: {
     parameters: {
       query?: never;
       header?: never;
@@ -11169,7 +14192,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_ItemSchema_'];
+          'application/json': components['schemas']['StaticDataPage_ItemSchema_'];
         };
       };
     };
@@ -11283,6 +14306,10 @@ export interface operations {
         content_code?: string;
         /** @description When true, excludes maps with access_type 'blocked' from the results. */
         hide_blocked_maps?: boolean;
+        /** @description When true, does not overlay active events on maps. */
+        hide_event?: boolean;
+        /** @description Filter maps by transition. True returns only maps with transitions, False returns only maps without. */
+        transition?: boolean | null;
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -11300,7 +14327,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_MapSchema_'];
+          'application/json': components['schemas']['StaticDataPage_MapSchema_'];
         };
       };
     };
@@ -11314,6 +14341,10 @@ export interface operations {
         content_code?: string;
         /** @description When true, excludes maps with access_type 'blocked' from the results. */
         hide_blocked_maps?: boolean;
+        /** @description When true, does not overlay active events on maps. */
+        hide_event?: boolean;
+        /** @description Filter maps by transition. True returns only maps with transitions, False returns only maps without. */
+        transition?: boolean | null;
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -11334,7 +14365,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_MapSchema_'];
+          'application/json': components['schemas']['StaticDataPage_MapSchema_'];
         };
       };
     };
@@ -11451,7 +14482,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_MonsterSchema_'];
+          'application/json': components['schemas']['StaticDataPage_MonsterSchema_'];
         };
       };
     };
@@ -11503,6 +14534,10 @@ export interface operations {
         name?: string;
         /** @description Type of NPCs. */
         type?: components['schemas']['NPCType'];
+        /** @description Currency code to filter NPCs that trade with this currency. */
+        currency?: string;
+        /** @description Item code to filter NPCs that trade this item. */
+        item?: string;
         /** @description Page number */
         page?: number;
         /** @description Page size */
@@ -11520,7 +14555,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_NPCSchema_'];
+          'application/json': components['schemas']['StaticDataPage_NPCSchema_'];
         };
       };
     };
@@ -11588,7 +14623,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_NPCItem_'];
+          'application/json': components['schemas']['StaticDataPage_NPCItemSchema_'];
         };
       };
       /** @description NPC items not found. */
@@ -11636,7 +14671,104 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_NPCItem_'];
+          'application/json': components['schemas']['StaticDataPage_NPCItemSchema_'];
+        };
+      };
+    };
+  };
+  get_all_raids_raids_get: {
+    parameters: {
+      query?: {
+        /** @description Name of the raid. */
+        name?: string;
+        /** @description Filter raids by active status. */
+        active?: boolean | null;
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched raids. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['StaticDataPage_RaidSchema_'];
+        };
+      };
+    };
+  };
+  get_raid_raids__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The code of the raid. */
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched raid. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['RaidResponseSchema'];
+        };
+      };
+      /** @description raid not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "raid not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  get_raid_leaderboard_raids__code__leaderboard_get: {
+    parameters: {
+      query?: {
+        /** @description Page number */
+        page?: number;
+        /** @description Page size */
+        size?: number;
+      };
+      header?: never;
+      path: {
+        /** @description The code of the raid. */
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched raid leaderboard. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['DataPage_RaidLeaderboardEntrySchema_'];
         };
       };
     };
@@ -11669,7 +14801,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_ResourceSchema_'];
+          'application/json': components['schemas']['StaticDataPage_ResourceSchema_'];
         };
       };
     };
@@ -11742,7 +14874,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_TaskFullSchema_'];
+          'application/json': components['schemas']['StaticDataPage_TaskFullSchema_'];
         };
       };
     };
@@ -11807,7 +14939,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['DataPage_DropRateSchema_'];
+          'application/json': components['schemas']['StaticDataPage_DropRateSchema_'];
         };
       };
     };
@@ -11852,7 +14984,7 @@ export interface operations {
       };
     };
   };
-  fight_simulation_simulation_fight_simulation_post: {
+  fight_simulation_simulation_fight_post: {
     parameters: {
       query?: never;
       header?: never;
@@ -11874,7 +15006,7 @@ export interface operations {
           'application/json': components['schemas']['CombatSimulationResponseSchema'];
         };
       };
-      /** @description Monster not found. */
+      /** @description Monster or item not found. */
       404: {
         headers: {
           [name: string]: unknown;
@@ -11884,7 +15016,7 @@ export interface operations {
            * @example {
            *       "error": {
            *         "code": 404,
-           *         "message": "Monster not found."
+           *         "message": "Monster or item not found."
            *       }
            *     }
            */
@@ -11924,6 +15056,23 @@ export interface operations {
            *       "error": {
            *         "code": 451,
            *         "message": "Access denied, you must be a member to do that."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Only boss monsters can be fought by multiple characters. */
+      486: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 486,
+           *         "message": "Only boss monsters can be fought by multiple characters."
            *       }
            *     }
            */
@@ -11983,6 +15132,524 @@ export interface operations {
            *       "error": {
            *         "code": 455,
            *         "message": "Failed to generate token."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  get_catalog_gems_shop__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched gems shop catalog. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GemShopCatalogResponseSchema'];
+        };
+      };
+    };
+  };
+  buy_skin_gems_shop_skin_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['BuySkinRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BuySkinResponseSchema'];
+        };
+      };
+      /** @description Skin not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Skin not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description You already own this skin. */
+      551: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 551,
+           *         "message": "You already own this skin."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This skin is not available for purchase. */
+      552: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 552,
+           *         "message": "This skin is not available for purchase."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Insufficient gems. */
+      563: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 563,
+           *         "message": "Insufficient gems."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  buy_spawn_event_gems_shop_spawn_event_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['SpawnEventRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ActiveEventResponseSchema'];
+        };
+      };
+      /** @description Event not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Event not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Insufficient gems. */
+      563: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 563,
+           *         "message": "Insufficient gems."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Event already active or maximum active events reached. */
+      564: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 564,
+           *         "message": "Event already active or maximum active events reached."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This event is on cooldown and cannot be spawned yet. */
+      566: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 566,
+           *         "message": "This event is on cooldown and cannot be spawned yet."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description This event is not available for purchase. */
+      571: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 571,
+           *         "message": "This event is not available for purchase."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  buy_subscription_gems_shop_subscription_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GemShopSubscriptionResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Insufficient gems. */
+      563: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 563,
+           *         "message": "Insufficient gems."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description An active Stripe subscription cannot be extended with gems or member tokens. */
+      573: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 573,
+           *         "message": "An active Stripe subscription cannot be extended with gems or member tokens."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  buy_custom_design_gems_shop_buy_custom_design_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['BuyCustomDesignRequestSchema'];
+      };
+    };
+    responses: {
+      /** @description Successfully fetched data. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GemShopCustomDesignPurchaseResponseSchema'];
+        };
+      };
+      /** @description Custom design not found. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 404,
+           *         "message": "Custom design not found."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Insufficient gems. */
+      563: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 563,
+           *         "message": "Insufficient gems."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+    };
+  };
+  ask_game_assistant_game_assistant_ask_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AssistantQuestionSchema'];
+      };
+    };
+    responses: {
+      /** @description The assistant has answered your question. */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AssistantAnswerSchema'];
+        };
+      };
+      /** @description Request could not be processed due to an invalid payload. */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 422,
+           *         "message": "Request could not be processed due to an invalid payload.",
+           *         "data": {
+           *           "field_name": [
+           *             "Field required"
+           *           ]
+           *         }
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Access denied, you must be a member to do that. */
+      451: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 451,
+           *         "message": "Access denied, you must be a member to do that."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description Insufficient gems. */
+      563: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 563,
+           *         "message": "Insufficient gems."
+           *       }
+           *     }
+           */
+          'application/json': components['schemas']['ErrorResponseSchema'];
+        };
+      };
+      /** @description You have reached the daily limit for assistant questions. Try again tomorrow. */
+      570: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          /**
+           * @example {
+           *       "error": {
+           *         "code": 570,
+           *         "message": "You have reached the daily limit for assistant questions. Try again tomorrow."
            *       }
            *     }
            */

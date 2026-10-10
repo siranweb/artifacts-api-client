@@ -7,6 +7,7 @@ import {
   GetActiveCharactersApiQuery,
   GetActiveCharactersApiResult,
   GetCharacterApiResult,
+  GetCharacterStatsApiResult,
 } from './types/api-schema-bindings.types';
 
 export class ArtifactsCharactersApi {
@@ -26,6 +27,14 @@ export class ArtifactsCharactersApi {
       body,
       isSecure: true,
     });
+  }
+
+  /** Retrieve gameplay statistics for a character.
+
+    Stats are only visible if the character's account has an active subscription.
+    Statistics are still collected for all accounts regardless of subscription status. */
+  public getStats(name: string): Promise<GetCharacterStatsApiResult> {
+    return this.httpClient.get<GetCharacterStatsApiResult>(`/characters/${name}/stats`);
   }
 
   /** Fetch active characters details. */

@@ -13,23 +13,60 @@ export type GetBankItemsApiQuery = paths['/my/bank/items']['get']['parameters'][
 export type GetBankItemsApiResult =
   paths['/my/bank/items']['get']['responses'][200]['content']['application/json'];
 
-export type GetMyGrandExchangeSellOrdersApiRequest =
+export type GetMyGrandExchangeOrdersApiRequest =
   paths['/my/grandexchange/orders']['get']['parameters']['query'];
-export type GetMyGrandExchangeSellOrdersApiResult =
+export type GetMyGrandExchangeOrdersApiResult =
   paths['/my/grandexchange/orders']['get']['responses'][200]['content']['application/json'];
 
-export type GetMyGrandExchangeSellHistoryApiRequest =
+export type GetMyGrandExchangeHistoryApiRequest =
   paths['/my/grandexchange/history']['get']['parameters']['query'];
-export type GetMyGrandExchangeSellHistoryApiResult =
+export type GetMyGrandExchangeHistoryApiResult =
   paths['/my/grandexchange/history']['get']['responses'][200]['content']['application/json'];
 
 export type GetAccountDetailsApiResult =
   paths['/my/details']['get']['responses'][200]['content']['application/json'];
 
+export type GetPendingItemsApiRequest = paths['/my/pending_items']['get']['parameters']['query'];
+export type GetPendingItemsApiResult =
+  paths['/my/pending_items']['get']['responses'][200]['content']['application/json'];
+
+export type GetRateLimitsApiResult =
+  paths['/my/rates']['get']['responses'][200]['content']['application/json'];
+
 export type ChangePasswordApiBody =
   paths['/my/change_password']['post']['requestBody']['content']['application/json'];
 export type ChangePasswordApiResult =
   paths['/my/change_password']['post']['responses'][200]['content']['application/json'];
+
+export type ChangeEmailApiBody =
+  paths['/my/change_email']['post']['requestBody']['content']['application/json'];
+export type ChangeEmailApiResult =
+  paths['/my/change_email']['post']['responses'][200]['content']['application/json'];
+
+export type GetMySubscriptionApiResult =
+  paths['/my/subscription']['get']['responses'][200]['content']['application/json'];
+
+export type SubscribeWithStripeApiBody =
+  paths['/my/subscribe/stripe']['post']['requestBody']['content']['application/json'];
+export type SubscribeWithStripeApiResult =
+  paths['/my/subscribe/stripe']['post']['responses'][200]['content']['application/json'];
+
+export type SubscribeWithMemberTokenApiResult =
+  paths['/my/subscribe/member_token']['post']['responses'][200]['content']['application/json'];
+
+export type CancelSubscriptionApiResult =
+  paths['/my/subscribe/cancel']['post']['responses'][200]['content']['application/json'];
+
+export type GetMyPurchaseHistoryApiResult =
+  paths['/my/purchase_history']['get']['responses'][200]['content']['application/json'];
+
+export type GetMyGemsHistoryApiResult =
+  paths['/my/gems_history']['get']['responses'][200]['content']['application/json'];
+
+export type BuyGemsApiBody =
+  paths['/my/buy_gems']['post']['requestBody']['content']['application/json'];
+export type BuyGemsApiResult =
+  paths['/my/buy_gems']['post']['responses'][200]['content']['application/json'];
 
 // My characters
 
@@ -44,14 +81,14 @@ export type TransitionApiResult =
 export type RestApiResult =
   paths['/my/{name}/action/rest']['post']['responses'][200]['content']['application/json'];
 
-export type EquipItemApiBody =
+export type EquipItemsApiBody =
   paths['/my/{name}/action/equip']['post']['requestBody']['content']['application/json'];
-export type EquipItemApiResult =
+export type EquipItemsApiResult =
   paths['/my/{name}/action/equip']['post']['responses'][200]['content']['application/json'];
 
-export type UnequipItemApiBody =
+export type UnequipItemsApiBody =
   paths['/my/{name}/action/unequip']['post']['requestBody']['content']['application/json'];
-export type UnequipItemApiResult =
+export type UnequipItemsApiResult =
   paths['/my/{name}/action/unequip']['post']['responses'][200]['content']['application/json'];
 
 export type UseItemApiBody =
@@ -115,14 +152,24 @@ export type BuyGrandExchangeItemApiResult =
   paths['/my/{name}/action/grandexchange/buy']['post']['responses'][200]['content']['application/json'];
 
 export type CreateGrandExchangeSellOrderApiBody =
-  paths['/my/{name}/action/grandexchange/sell']['post']['requestBody']['content']['application/json'];
+  paths['/my/{name}/action/grandexchange/create_sell_order']['post']['requestBody']['content']['application/json'];
 export type CreateGrandExchangeSellOrderApiResult =
-  paths['/my/{name}/action/grandexchange/sell']['post']['responses'][200]['content']['application/json'];
+  paths['/my/{name}/action/grandexchange/create_sell_order']['post']['responses'][200]['content']['application/json'];
 
-export type CancelGrandExchangeSellOrderApiBody =
+export type CancelGrandExchangeOrderApiBody =
   paths['/my/{name}/action/grandexchange/cancel']['post']['requestBody']['content']['application/json'];
-export type CancelGrandExchangeSellOrderApiResult =
+export type CancelGrandExchangeOrderApiResult =
   paths['/my/{name}/action/grandexchange/cancel']['post']['responses'][200]['content']['application/json'];
+
+export type CreateGrandExchangeBuyOrderApiBody =
+  paths['/my/{name}/action/grandexchange/create_buy_order']['post']['requestBody']['content']['application/json'];
+export type CreateGrandExchangeBuyOrderApiResult =
+  paths['/my/{name}/action/grandexchange/create_buy_order']['post']['responses'][200]['content']['application/json'];
+
+export type FillGrandExchangeApiBody =
+  paths['/my/{name}/action/grandexchange/fill']['post']['requestBody']['content']['application/json'];
+export type FillGrandExchangeApiResult =
+  paths['/my/{name}/action/grandexchange/fill']['post']['responses'][200]['content']['application/json'];
 
 export type CompleteTaskApiResult =
   paths['/my/{name}/action/task/complete']['post']['responses'][200]['content']['application/json'];
@@ -151,6 +198,9 @@ export type GiveItemsApiBody =
 export type GiveItemsApiResult =
   paths['/my/{name}/action/give/item']['post']['responses'][200]['content']['application/json'];
 
+export type ClaimPendingItemApiResult =
+  paths['/my/{name}/action/claim_item/{id}']['post']['responses'][200]['content']['application/json'];
+
 export type DeleteItemApiBody =
   paths['/my/{name}/action/delete']['post']['requestBody']['content']['application/json'];
 export type DeleteItemApiResult =
@@ -160,6 +210,11 @@ export type ChangeSkinApiBody =
   paths['/my/{name}/action/change_skin']['post']['requestBody']['content']['application/json'];
 export type ChangeSkinApiResult =
   paths['/my/{name}/action/change_skin']['post']['responses'][200]['content']['application/json'];
+
+export type RenameApiBody =
+  paths['/my/{name}/action/rename']['post']['requestBody']['content']['application/json'];
+export type RenameApiResult =
+  paths['/my/{name}/action/rename']['post']['responses'][200]['content']['application/json'];
 
 export type GetAllLogsApiQuery = paths['/my/logs']['get']['parameters']['query'];
 export type GetAllLogsApiResult =
@@ -173,6 +228,14 @@ export type GetMyCharactersApiResult =
   paths['/my/characters']['get']['responses'][200]['content']['application/json'];
 
 // Accounts
+
+export type GetAccountAchievementsApiQuery =
+  paths['/accounts/{account}/achievements']['get']['parameters']['query'];
+export type GetAccountAchievementsApiResult =
+  paths['/accounts/{account}/achievements']['get']['responses'][200]['content']['application/json'];
+
+export type GetAccountCharactersApiResult =
+  paths['/accounts/{account}/characters']['get']['responses'][200]['content']['application/json'];
 
 export type CreateAccountApiBody =
   paths['/accounts/create']['post']['requestBody']['content']['application/json'];
@@ -188,14 +251,6 @@ export type ResetPasswordApiBody =
   paths['/accounts/reset_password']['post']['requestBody']['content']['application/json'];
 export type ResetPasswordApiResult =
   paths['/accounts/reset_password']['post']['responses'][200]['content']['application/json'];
-
-export type GetAccountAchievementsApiQuery =
-  paths['/accounts/{account}/achievements']['get']['parameters']['query'];
-export type GetAccountAchievementsApiResult =
-  paths['/accounts/{account}/achievements']['get']['responses'][200]['content']['application/json'];
-
-export type GetAccountCharactersApiResult =
-  paths['/accounts/{account}/characters']['get']['responses'][200]['content']['application/json'];
 
 export type GetAccountApiResult =
   paths['/accounts/{account}']['get']['responses'][200]['content']['application/json'];
@@ -218,6 +273,27 @@ export type GetAllBadgesApiResult =
 export type GetBadgeApiResult =
   paths['/badges/{code}']['get']['responses'][200]['content']['application/json'];
 
+// Skins
+
+export type GetAllSkinsApiQuery = paths['/skins']['get']['parameters']['query'];
+export type GetAllSkinsApiResult =
+  paths['/skins']['get']['responses'][200]['content']['application/json'];
+
+export type GetSkinApiResult =
+  paths['/skins/{code}']['get']['responses'][200]['content']['application/json'];
+
+
+// Season Rewards
+
+export type GetAllSeasonRewardsApiQuery = paths['/season_rewards']['get']['parameters']['query'];
+export type GetAllSeasonRewardsApiResult =
+  paths['/season_rewards/{code}']['get']['responses'][200]['content']['application/json'];
+
+export type GetSeasonRewardsByCodeApiQuery =
+  paths['/season_rewards/{code}']['get']['parameters']['query'];
+export type GetSeasonRewardsByCodeApiResult =
+  paths['/season_rewards/{code}']['get']['responses'][200]['content']['application/json'];
+
 // Characters
 
 export type CreateCharacterApiBody =
@@ -229,6 +305,9 @@ export type DeleteCharacterApiBody =
   paths['/characters/delete']['post']['requestBody']['content']['application/json'];
 export type DeleteCharacterApiResult =
   paths['/characters/delete']['post']['responses'][200]['content']['application/json'];
+
+export type GetCharacterStatsApiResult =
+  paths['/characters/{name}/stats']['get']['responses'][200]['content']['application/json'];
 
 export type GetActiveCharactersApiQuery = paths['/characters/active']['get']['parameters']['query'];
 export type GetActiveCharactersApiResult =
@@ -255,11 +334,6 @@ export type GetAllActiveEventsApiResult =
 export type GetAllEventsApiQuery = paths['/events']['get']['parameters']['query'];
 export type GetAllEventsApiResult =
   paths['/events']['get']['responses'][200]['content']['application/json'];
-
-export type SpawnEventApiBody =
-  paths['/events/spawn']['post']['requestBody']['content']['application/json'];
-export type SpawnEventApiResult =
-  paths['/events/spawn']['post']['responses'][200]['content']['application/json'];
 
 // Grand Exchange
 
@@ -339,6 +413,20 @@ export type GetAllNpcsItemsApiQuery = paths['/npcs/items']['get']['parameters'][
 export type GetAllNpcsItemsApiResult =
   paths['/npcs/items']['get']['responses'][200]['content']['application/json'];
 
+// Raids
+
+export type GetAllRaidsApiQuery = paths['/raids']['get']['parameters']['query'];
+export type GetAllRaidsApiResult =
+  paths['/raids']['get']['responses'][200]['content']['application/json'];
+
+export type GetRaidApiResult =
+  paths['/raids/{code}']['get']['responses'][200]['content']['application/json'];
+
+export type GetRaidLeaderboardApiQuery =
+  paths['/raids/{code}/leaderboard']['get']['parameters']['query'];
+export type GetRaidLeaderboardApiResult =
+  paths['/raids/{code}/leaderboard']['get']['responses'][200]['content']['application/json'];
+
 // Resources
 
 export type GetAllResourcesApiQuery = paths['/resources']['get']['parameters']['query'];
@@ -367,11 +455,41 @@ export type GetTasksRewardsApiResult =
 // Simulation
 
 export type FightSimulationApiBody =
-  paths['/simulation/fight_simulation']['post']['requestBody']['content']['application/json'];
+  paths['/simulation/fight']['post']['requestBody']['content']['application/json'];
 export type FightSimulationApiResult =
-  paths['/simulation/fight_simulation']['post']['responses'][200]['content']['application/json'];
+  paths['/simulation/fight']['post']['responses'][200]['content']['application/json'];
 
 // Token
 
-export type GenerateTokenResult =
+export type GenerateTokenApiResult =
   paths['/token']['post']['responses'][200]['content']['application/json'];
+
+// Gems Shop
+
+export type GetCatalogApiResult =
+  paths['/gems_shop/']['get']['responses'][200]['content']['application/json'];
+
+export type BuySkinApiBody =
+  paths['/gems_shop/skin']['post']['requestBody']['content']['application/json'];
+export type BuySkinApiResult =
+  paths['/gems_shop/skin']['post']['responses'][200]['content']['application/json'];
+
+export type BuySpawnEventApiBody =
+  paths['/gems_shop/spawn_event']['post']['requestBody']['content']['application/json'];
+export type BuySpawnEventApiResult =
+  paths['/gems_shop/spawn_event']['post']['responses'][200]['content']['application/json'];
+
+export type BuySubscriptionApiResult =
+  paths['/gems_shop/subscription']['post']['responses'][200]['content']['application/json'];
+
+export type BuyCustomDesignApiBody =
+  paths['/gems_shop/buy_custom_design']['post']['requestBody']['content']['application/json'];
+export type BuyCustomDesignApiResult =
+  paths['/gems_shop/buy_custom_design']['post']['responses'][200]['content']['application/json'];
+
+// Game Assistant
+
+export type AskGameAssistantApiBody =
+  paths['/game_assistant/ask']['post']['requestBody']['content']['application/json'];
+export type AskGameAssistantApiResult =
+  paths['/game_assistant/ask']['post']['responses'][200]['content']['application/json'];
