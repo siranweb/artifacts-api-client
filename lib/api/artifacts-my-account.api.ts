@@ -104,7 +104,7 @@ export class ArtifactsMyAccountApi {
   }
 
   /** Get current subscription details. */
-  public getMySubscription(): Promise<GetMySubscriptionApiResult> {
+  public getSubscription(): Promise<GetMySubscriptionApiResult> {
     return this.httpClient.get<GetMySubscriptionApiResult>(`/my/subscription`, {
       isSecure: true,
     });
@@ -136,14 +136,14 @@ export class ArtifactsMyAccountApi {
   }
 
   /** List all purchases (subscriptions and gem packs). */
-  public getMyPurchaseHistory(): Promise<GetMyPurchaseHistoryApiResult> {
+  public getPurchaseHistory(): Promise<GetMyPurchaseHistoryApiResult> {
     return this.httpClient.get<GetMyPurchaseHistoryApiResult>(`/my/purchase_history`, {
       isSecure: true,
     });
   }
 
   /** List all gem credits and debits. */
-  public getMyGemsHistory(): Promise<GetMyGemsHistoryApiResult> {
+  public getGemsHistory(): Promise<GetMyGemsHistoryApiResult> {
     return this.httpClient.get<GetMyGemsHistoryApiResult>(`/my/gems_history`, {
       isSecure: true,
     });
