@@ -15,6 +15,24 @@ import {
 export class ArtifactsAccountsApi {
   constructor(private readonly httpClient: ArtifactsHttpClient) {}
 
+  /** Retrieve the achievements of an account. */
+  public getAchievements(
+    account: string,
+    params?: GetAccountAchievementsApiQuery,
+  ): Promise<GetAccountAchievementsApiResult> {
+    return this.httpClient.get<GetAccountAchievementsApiResult>(
+      `/accounts/${account}/achievements`,
+      {
+        query: params,
+      },
+    );
+  }
+
+  /** Account character lists. */
+  public getCharacters(account: string): Promise<GetAccountCharactersApiResult> {
+    return this.httpClient.get<GetAccountCharactersApiResult>(`/accounts/${account}/characters`);
+  }
+
   /** Create an account. */
   public create(body: CreateAccountApiBody): Promise<CreateAccountApiResult> {
     return this.httpClient.post<CreateAccountApiResult>(`/accounts/create`, {
@@ -34,24 +52,6 @@ export class ArtifactsAccountsApi {
     return this.httpClient.post<ResetPasswordApiResult>(`/accounts/reset_password`, {
       body,
     });
-  }
-
-  /** Retrieve the achievements of an account. */
-  public getAchievements(
-    account: string,
-    params?: GetAccountAchievementsApiQuery,
-  ): Promise<GetAccountAchievementsApiResult> {
-    return this.httpClient.get<GetAccountAchievementsApiResult>(
-      `/accounts/${account}/achievements`,
-      {
-        query: params,
-      },
-    );
-  }
-
-  /** Account character lists. */
-  public getCharacters(account: string): Promise<GetAccountCharactersApiResult> {
-    return this.httpClient.get<GetAccountCharactersApiResult>(`/accounts/${account}/characters`);
   }
 
   /** Retrieve the details of an account. */

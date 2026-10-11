@@ -9,7 +9,7 @@ export class ArtifactsSimulationApi {
 
   /** Simulate combat with fake characters against a monster multiple times. Member or founder account required. */
   public simulate(body: FightSimulationApiBody): Promise<FightSimulationApiResult> {
-    return this.httpClient.post<FightSimulationApiResult>(`/simulation/fight_simulation`, {
+    return this.httpClient.post<FightSimulationApiResult>(`/simulation/fight`, {
       body,
       isSecure: true,
     });
