@@ -4,7 +4,10 @@
   "description": "Api client for https://artifactsmmo.com",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/siranweb/artifacts-api-client.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masonzettl/artifacts-api-client.git"
+  },
   "keywords": [
     "artifacts",
     "api",
